@@ -27,12 +27,12 @@ erDiagram
 
 ### Key Models
 
-*   **[`sale.order`]( addons/sale/models/sale_order.py)**: The tactical root. Manages status (`state`), partner references, and totals (`amount_total`, `tax_totals`).
-*   **[`sale.order.line`]( addons/sale/models/sale_order_line.py)**: The itemization. complex logic for:
+*   **[`sale.order`](odoo/addons/sale/models/sale_order.py)**: The tactical root. Manages status (`state`), partner references, and totals (`amount_total`, `tax_totals`).
+*   **[`sale.order.line`](odoo/addons/sale/models/sale_order_line.py)**: The itemization. complex logic for:
     *   **Pricing**: Computes `price_unit` from Pricelists.
     *   **Taxes**: Computes `tax_ids` based on Fiscal Positions.
     *   **Description**: Auto-generates descriptions based on product variants.
-*   **[`product.pricelist`]( addons/product/models/product_pricelist.py)**: Engine for price rules (discounts, formulas) based on customer, quantity, and date.
+*   **[`product.pricelist`](odoo/addons/product/models/product_pricelist.py)**: Engine for price rules (discounts, formulas) based on customer, quantity, and date.
 
 ---
 
@@ -136,17 +136,17 @@ Extend `product.pricelist` or `sale.order.line._get_pricelist_price` to inject c
 The `sale_stock` module bridges Sales and Inventory.
 
 #### 1. Procurement Trigger
-The method `_action_launch_stock_rule` in **[`sale.order`]( addons/sale_stock/models/sale_order.py)** is the entry point. It iterates over lines and triggers the **Procurement Engine** (**[`stock.rule`]( addons/stock/models/stock_rule.py)**):
+The method `_action_launch_stock_rule` in **[`sale.order`](odoo/addons/sale_stock/models/sale_order.py)** is the entry point. It iterates over lines and triggers the **Procurement Engine** (**[`stock.rule`](odoo/addons/stock/models/stock_rule.py)**):
 *   It creates a `procurement.group` to link all generated moves to the SO.
 *   It calls `stock.rule.run()`, which finds the appropriate rule (e.g., "Pull from Stock", "Buy", "Manufacture") based on the Product Route.
 
 #### 2. Qty Delivered Computation
-The field `qty_delivered` on **[`sale.order.line`]( addons/sale_stock/models/sale_order_line.py)** is a computed field with a complex dependency chain:
+The field `qty_delivered` on **[`sale.order.line`](odoo/addons/sale_stock/models/sale_order_line.py)** is a computed field with a complex dependency chain:
 *   **Storable Products**: Computed from `stock.move` records linked to the line. It sums up moves in `state='done'` (outgoing - return).
 *   **Service Products**: Computed from `account.analytic.line` (Timesheets) or manually set (Milestones).
 
 ### D. Invoicing Logic (`sale_management` / `account`)
-Invoicing is driven by the `invoice_status` field (Up for Billing) and executed by the **Create Invoices** wizard (**[`sale.advance.payment.inv`]( addons/sale/wizard/sale_make_invoice_advance.py)**).
+Invoicing is driven by the `invoice_status` field (Up for Billing) and executed by the **Create Invoices** wizard (**[`sale.advance.payment.inv`](odoo/addons/sale/wizard/sale_make_invoice_advance.py)**).
 
 #### 1. Regular Invoicing
 The wizard calls `_create_invoices(final=True)`.
@@ -165,7 +165,7 @@ The wizard calls `_create_invoices(final=True)`.
 Odoo's reporting engine relies on **SQL Views** to flatten complex data structures into a single, analyzable table.
 
 ### The "Data Warehouse" Pattern
-The model **[`sale.report`]( addons/sale/report/sale_report.py)** is a read-only model (`_auto = False`) backed by a PostgreSQL View instead of a physical table.
+The model **[`sale.report`](odoo/addons/sale/report/sale_report.py)** is a read-only model (`_auto = False`) backed by a PostgreSQL View instead of a physical table.
 
 1.  **Flattening**: It joins `sale.order.line`, `sale.order`, `res.partner`, `product.product`, and `product.template`.
 2.  **Aggregation**: It pre-calculates totals (e.g., `price_total`, `qty_delivered`) to allow fast grouping in Pivot Tables.

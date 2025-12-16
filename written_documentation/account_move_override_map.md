@@ -31,28 +31,28 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
 
 ### 📦 `account`
 
-- **File**: ` addons/account/models/account_bank_statement_line.py`
+- **File**: `odoo/addons/account/models/account_bank_statement_line.py`
   - **Class**: `AccountMove`
   - **Added Fields**: statement_line_ids (_One2many_)
-- **File**: ` addons/account/models/account_payment.py`
+- **File**: `odoo/addons/account/models/account_payment.py`
   - **Class**: `AccountMove`
   - **Added Fields**: payment_ids (_One2many_)
-- **File**: ` addons/account/views/account_move_views.xml`
+- **File**: `odoo/addons/account/views/account_move_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_move_tree_multi_edit`]( addons/account/views/account_move_views.xml#L498) -> `account.view_move_tree`
-    - [`view_duplicated_moves_tree_js`]( addons/account/views/account_move_views.xml#L573) -> `account.view_invoice_tree`
-    - [`view_out_invoice_tree`]( addons/account/views/account_move_views.xml#L595) -> `account.view_invoice_tree`
-    - [`view_out_credit_note_tree`]( addons/account/views/account_move_views.xml#L610) -> `account.view_invoice_tree`
-    - [`view_in_invoice_tree`]( addons/account/views/account_move_views.xml#L625) -> `account.view_invoice_tree`
-    - [`view_in_invoice_bill_tree`]( addons/account/views/account_move_views.xml#L637) -> `account.view_in_invoice_tree`
-    - [`view_in_invoice_refund_tree`]( addons/account/views/account_move_views.xml#L649) -> `account.view_in_invoice_tree`
-    - [`view_account_bill_filter`]( addons/account/views/account_move_views.xml#L1733) -> `account.view_account_invoice_filter`
-    - [`view_account_move_with_gaps_in_sequence_filter`]( addons/account/views/account_move_views.xml#L1771) -> `account.view_account_invoice_filter`
+    - [`view_move_tree_multi_edit`](odoo/addons/account/views/account_move_views.xml#L498) -> `account.view_move_tree`
+    - [`view_duplicated_moves_tree_js`](odoo/addons/account/views/account_move_views.xml#L573) -> `account.view_invoice_tree`
+    - [`view_out_invoice_tree`](odoo/addons/account/views/account_move_views.xml#L595) -> `account.view_invoice_tree`
+    - [`view_out_credit_note_tree`](odoo/addons/account/views/account_move_views.xml#L610) -> `account.view_invoice_tree`
+    - [`view_in_invoice_tree`](odoo/addons/account/views/account_move_views.xml#L625) -> `account.view_invoice_tree`
+    - [`view_in_invoice_bill_tree`](odoo/addons/account/views/account_move_views.xml#L637) -> `account.view_in_invoice_tree`
+    - [`view_in_invoice_refund_tree`](odoo/addons/account/views/account_move_views.xml#L649) -> `account.view_in_invoice_tree`
+    - [`view_account_bill_filter`](odoo/addons/account/views/account_move_views.xml#L1733) -> `account.view_account_invoice_filter`
+    - [`view_account_move_with_gaps_in_sequence_filter`](odoo/addons/account/views/account_move_views.xml#L1771) -> `account.view_account_invoice_filter`
 
 ### 📦 `account_debit_note`
 
-- **File**: ` addons/account_debit_note/models/account_move.py`
+- **File**: `odoo/addons/account_debit_note/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: debit_origin_id (_Many2one_), debit_note_ids (_One2many_), debit_note_count (_Integer_)
   - **Methods**:
@@ -62,16 +62,16 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_get_last_sequence_domain`
     - `_get_starting_sequence`
     - `_get_copy_message_content`
-- **File**: ` addons/account_debit_note/views/account_move_view.xml`
+- **File**: `odoo/addons/account_debit_note/views/account_move_view.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_move_form_debit`]( addons/account_debit_note/views/account_move_view.xml#L3) -> `account.view_move_form`
-    - [`view_account_move_filter_debit`]( addons/account_debit_note/views/account_move_view.xml#L28) -> `account.view_account_move_filter`
-    - [`view_account_invoice_filter_debit`]( addons/account_debit_note/views/account_move_view.xml#L40) -> `account.view_account_invoice_filter`
+    - [`view_move_form_debit`](odoo/addons/account_debit_note/views/account_move_view.xml#L3) -> `account.view_move_form`
+    - [`view_account_move_filter_debit`](odoo/addons/account_debit_note/views/account_move_view.xml#L28) -> `account.view_account_move_filter`
+    - [`view_account_invoice_filter_debit`](odoo/addons/account_debit_note/views/account_move_view.xml#L40) -> `account.view_account_invoice_filter`
 
 ### 📦 `account_edi`
 
-- **File**: ` addons/account_edi/models/account_move.py`
+- **File**: `odoo/addons/account_edi/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: edi_document_ids (_One2many_), edi_state (_Selection_), edi_error_count (_Integer_), edi_blocking_level (_Selection_), edi_error_message (_Html_), edi_web_services_to_process (_Text_), edi_show_cancel_button (_Boolean_), edi_show_abandon_cancel_button (_Boolean_), edi_show_force_cancel_button (_Boolean_)
   - **Methods**:
@@ -101,19 +101,19 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_retry_edi_documents_error`
     - `action_retry_edi_documents_error`
     - `_process_attachments_for_template_post`
-- **File**: ` addons/account_edi/views/account_move_views.xml`
+- **File**: `odoo/addons/account_edi/views/account_move_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_out_invoice_tree_inherit`]( addons/account_edi/views/account_move_views.xml#L12) -> `account.view_out_invoice_tree`
-    - [`view_out_credit_note_tree_inherit`]( addons/account_edi/views/account_move_views.xml#L29) -> `account.view_out_credit_note_tree`
-    - [`view_in_invoice_refund_tree_inherit`]( addons/account_edi/views/account_move_views.xml#L42) -> `account.view_in_invoice_refund_tree`
-    - [`view_in_bill_tree_inherit`]( addons/account_edi/views/account_move_views.xml#L55) -> `account.view_in_invoice_bill_tree`
-    - [`view_account_invoice_filter`]( addons/account_edi/views/account_move_views.xml#L68) -> `account.view_account_invoice_filter`
-    - [`view_move_form_inherit`]( addons/account_edi/views/account_move_views.xml#L83) -> `account.view_move_form`
+    - [`view_out_invoice_tree_inherit`](odoo/addons/account_edi/views/account_move_views.xml#L12) -> `account.view_out_invoice_tree`
+    - [`view_out_credit_note_tree_inherit`](odoo/addons/account_edi/views/account_move_views.xml#L29) -> `account.view_out_credit_note_tree`
+    - [`view_in_invoice_refund_tree_inherit`](odoo/addons/account_edi/views/account_move_views.xml#L42) -> `account.view_in_invoice_refund_tree`
+    - [`view_in_bill_tree_inherit`](odoo/addons/account_edi/views/account_move_views.xml#L55) -> `account.view_in_invoice_bill_tree`
+    - [`view_account_invoice_filter`](odoo/addons/account_edi/views/account_move_views.xml#L68) -> `account.view_account_invoice_filter`
+    - [`view_move_form_inherit`](odoo/addons/account_edi/views/account_move_views.xml#L83) -> `account.view_move_form`
 
 ### 📦 `account_edi_ubl_cii`
 
-- **File**: ` addons/account_edi_ubl_cii/models/account_move.py`
+- **File**: `odoo/addons/account_edi_ubl_cii/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: ubl_cii_xml_id (_Many2one_), ubl_cii_xml_file (_Binary_), ubl_cii_xml_filename (_Char_)
   - **Methods**:
@@ -133,18 +133,18 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
 
 ### 📦 `account_fleet`
 
-- **File**: ` addons/account_fleet/models/account_move.py`
+- **File**: `odoo/addons/account_fleet/models/account_move.py`
   - **Class**: `AccountMove`
   - **Methods**: `_post`
-- **File**: ` addons/account_fleet/views/account_move_views.xml`
+- **File**: `odoo/addons/account_fleet/views/account_move_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_move_form`]( addons/account_fleet/views/account_move_views.xml#L4) -> `account.view_move_form`
-    - [`account_move_view_tree`]( addons/account_fleet/views/account_move_views.xml#L20) -> `account.view_move_tree`
+    - [`view_move_form`](odoo/addons/account_fleet/views/account_move_views.xml#L4) -> `account.view_move_form`
+    - [`account_move_view_tree`](odoo/addons/account_fleet/views/account_move_views.xml#L20) -> `account.view_move_tree`
 
 ### 📦 `account_payment`
 
-- **File**: ` addons/account_payment/models/account_move.py`
+- **File**: `odoo/addons/account_payment/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: transaction_ids (_Many2many_), authorized_transaction_ids (_Many2many_), transaction_count (_Integer_), amount_paid (_Monetary_)
   - **Methods**:
@@ -160,14 +160,14 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_get_default_payment_link_values`
     - `_generate_portal_payment_qr`
     - `_get_portal_payment_link`
-- **File**: ` addons/account_payment/views/account_move_views.xml`
+- **File**: `odoo/addons/account_payment/views/account_move_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`account_invoice_view_form_inherit_payment`]( addons/account_payment/views/account_move_views.xml#L4) -> `account.view_move_form`
+    - [`account_invoice_view_form_inherit_payment`](odoo/addons/account_payment/views/account_move_views.xml#L4) -> `account.view_move_form`
 
 ### 📦 `account_peppol`
 
-- **File**: ` addons/account_peppol/models/account_move.py`
+- **File**: `odoo/addons/account_peppol/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: peppol_message_uuid (_Char_), peppol_move_state (_Selection_)
   - **Methods**:
@@ -176,33 +176,33 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_compute_display_send_button`
     - `_compute_peppol_move_state (@depends)`
     - `_notify_by_email_prepare_rendering_context`
-- **File**: ` addons/account_peppol/views/account_move_views.xml`
+- **File**: `odoo/addons/account_peppol/views/account_move_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`account_peppol_view_move_form`]( addons/account_peppol/views/account_move_views.xml#L3) -> `account.view_move_form`
-    - [`account_peppol_view_out_invoice_tree_inherit`]( addons/account_peppol/views/account_move_views.xml#L24) -> `account.view_out_invoice_tree`
-    - [`account_peppol_view_out_credit_note_tree_inherit`]( addons/account_peppol/views/account_move_views.xml#L35) -> `account.view_out_credit_note_tree`
-    - [`account_peppol_view_account_invoice_filter`]( addons/account_peppol/views/account_move_views.xml#L46) -> `account.view_account_invoice_filter`
+    - [`account_peppol_view_move_form`](odoo/addons/account_peppol/views/account_move_views.xml#L3) -> `account.view_move_form`
+    - [`account_peppol_view_out_invoice_tree_inherit`](odoo/addons/account_peppol/views/account_move_views.xml#L24) -> `account.view_out_invoice_tree`
+    - [`account_peppol_view_out_credit_note_tree_inherit`](odoo/addons/account_peppol/views/account_move_views.xml#L35) -> `account.view_out_credit_note_tree`
+    - [`account_peppol_view_account_invoice_filter`](odoo/addons/account_peppol/views/account_move_views.xml#L46) -> `account.view_account_invoice_filter`
 
 ### 📦 `account_peppol_advanced_fields`
 
-- **File**: ` addons/account_peppol_advanced_fields/models/account_move.py`
+- **File**: `odoo/addons/account_peppol_advanced_fields/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: peppol_contract_document_reference (_Char_), peppol_project_reference (_Char_), peppol_originator_document_reference (_Char_), peppol_despatch_document_reference (_Char_), peppol_additional_document_reference (_Char_), peppol_accounting_cost (_Char_), peppol_delivery_location_id (_Char_)
-- **File**: ` addons/account_peppol_advanced_fields/views/account_move_views.xml`
+- **File**: `odoo/addons/account_peppol_advanced_fields/views/account_move_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_move_form_inherit_peppol`]( addons/account_peppol_advanced_fields/views/account_move_views.xml#L4) -> `account.view_move_form`
+    - [`view_move_form_inherit_peppol`](odoo/addons/account_peppol_advanced_fields/views/account_move_views.xml#L4) -> `account.view_move_form`
 
 ### 📦 `event_booth_sale`
 
-- **File**: ` addons/event_booth_sale/models/account_move.py`
+- **File**: `odoo/addons/event_booth_sale/models/account_move.py`
   - **Class**: `AccountMove`
   - **Methods**: `_invoice_paid_hook`
 
 ### 📦 `hr_expense`
 
-- **File**: ` addons/hr_expense/models/account_move.py`
+- **File**: `odoo/addons/hr_expense/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: expense_ids (_One2many_), nb_expenses (_Integer_)
   - **Methods**:
@@ -216,28 +216,28 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_prepare_product_base_line_for_taxes_computation`
     - `_reverse_moves`
     - `button_cancel`
-- **File**: ` addons/hr_expense/views/account_move_views.xml`
+- **File**: `odoo/addons/hr_expense/views/account_move_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_move_form_inherit_expense`]( addons/hr_expense/views/account_move_views.xml#L4) -> `account.view_move_form`
+    - [`view_move_form_inherit_expense`](odoo/addons/hr_expense/views/account_move_views.xml#L4) -> `account.view_move_form`
 
 ### 📦 `mrp_account`
 
-- **File**: ` addons/mrp_account/models/account_move.py`
+- **File**: `odoo/addons/mrp_account/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: wip_production_ids (_Many2many_), wip_production_count (_Integer_)
   - **Methods**:
     - `copy`
     - `_compute_wip_production_count (@depends)`
     - `action_view_wip_production`
-- **File**: ` addons/mrp_account/views/account_move_views.xml`
+- **File**: `odoo/addons/mrp_account/views/account_move_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_move_form_inherit_mrp_account`]( addons/mrp_account/views/account_move_views.xml#L2) -> `account.view_move_form`
+    - [`view_move_form_inherit_mrp_account`](odoo/addons/mrp_account/views/account_move_views.xml#L2) -> `account.view_move_form`
 
 ### 📦 `point_of_sale`
 
-- **File**: ` addons/point_of_sale/models/account_move.py`
+- **File**: `odoo/addons/point_of_sale/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: pos_order_ids (_One2many_), pos_payment_ids (_One2many_), pos_refunded_invoice_ids (_Many2many_), reversed_pos_order_id (_Many2one_), pos_session_ids (_One2many_), pos_order_count (_Integer_)
   - **Methods**:
@@ -252,26 +252,26 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `action_view_source_pos_orders`
     - `button_draft`
     - `_load_pos_data_fields (@model)`
-- **File**: ` addons/point_of_sale/views/account_move_views.xml`
+- **File**: `odoo/addons/point_of_sale/views/account_move_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_account_journal_pos_user_form`]( addons/point_of_sale/views/account_move_views.xml#L3) -> `account.view_move_form`
+    - [`view_account_journal_pos_user_form`](odoo/addons/point_of_sale/views/account_move_views.xml#L3) -> `account.view_move_form`
 
 ### 📦 `pos_sale`
 
-- **File**: ` addons/pos_sale/models/account_move.py`
+- **File**: `odoo/addons/pos_sale/models/account_move.py`
   - **Class**: `AccountMove`
   - **Methods**: `reflect_cancelled_sol`, `button_cancel`, `action_post`
 
 ### 📦 `product_email_template`
 
-- **File**: ` addons/product_email_template/models/account_move.py`
+- **File**: `odoo/addons/product_email_template/models/account_move.py`
   - **Class**: `AccountMove`
   - **Methods**: `invoice_validate_send_email`, `_post`
 
 ### 📦 `purchase`
 
-- **File**: ` addons/purchase/models/account_invoice.py`
+- **File**: `odoo/addons/purchase/models/account_invoice.py`
   - **Class**: `AccountMove`
   - **Added Fields**: purchase_vendor_bill_id (_Many2one_), purchase_id (_Many2one_), purchase_order_count (_Integer_), purchase_order_name (_Char_), is_purchase_matched (_Boolean_), purchase_warning_text (_Text_)
   - **Methods**:
@@ -291,14 +291,14 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_set_purchase_orders`
     - `_match_purchase_orders`
     - `_find_and_set_purchase_orders`
-- **File**: ` addons/purchase/views/account_move_views.xml`
+- **File**: `odoo/addons/purchase/views/account_move_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_move_form_inherit_purchase`]( addons/purchase/views/account_move_views.xml#L3) -> `account.view_move_form`
+    - [`view_move_form_inherit_purchase`](odoo/addons/purchase/views/account_move_views.xml#L3) -> `account.view_move_form`
 
 ### 📦 `purchase_stock`
 
-- **File**: ` addons/purchase_stock/models/account_invoice.py`
+- **File**: `odoo/addons/purchase_stock/models/account_invoice.py`
   - **Class**: `AccountMove`
   - **Methods**:
     - `_stock_account_prepare_anglo_saxon_in_lines_vals`
@@ -309,7 +309,7 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
 
 ### 📦 `sale`
 
-- **File**: ` addons/sale/models/account_move.py`
+- **File**: `odoo/addons/sale/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: team_id (_Many2one_), campaign_id (_Many2one_), medium_id (_Many2one_), source_id (_Many2one_), sale_order_count (_Integer_), sale_warning_text (_Text_)
   - **Methods**:
@@ -328,28 +328,28 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_is_downpayment`
     - `_get_sale_order_invoiced_amount`
     - `_get_partner_credit_warning_exclude_amount`
-- **File**: ` addons/sale/views/account_views.xml`
+- **File**: `odoo/addons/sale/views/account_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`account_invoice_groupby_inherit`]( addons/sale/views/account_views.xml#L4) -> `account.view_account_invoice_filter`
-    - [`account_invoice_view_tree`]( addons/sale/views/account_views.xml#L18) -> `account.view_invoice_tree`
-    - [`account_invoice_form`]( addons/sale/views/account_views.xml#L29) -> `account.view_move_form`
+    - [`account_invoice_groupby_inherit`](odoo/addons/sale/views/account_views.xml#L4) -> `account.view_account_invoice_filter`
+    - [`account_invoice_view_tree`](odoo/addons/sale/views/account_views.xml#L18) -> `account.view_invoice_tree`
+    - [`account_invoice_form`](odoo/addons/sale/views/account_views.xml#L29) -> `account.view_move_form`
 
 ### 📦 `sale_expense`
 
-- **File**: ` addons/sale_expense/models/account_move.py`
+- **File**: `odoo/addons/sale_expense/models/account_move.py`
   - **Class**: `AccountMove`
   - **Methods**: `_reverse_moves`, `button_draft`, `unlink`
 
 ### 📦 `sale_project`
 
-- **File**: ` addons/sale_project/models/account_move.py`
+- **File**: `odoo/addons/sale_project/models/account_move.py`
   - **Class**: `AccountMove`
   - **Methods**: `_get_action_per_item`
 
 ### 📦 `sale_stock`
 
-- **File**: ` addons/sale_stock/models/account_move.py`
+- **File**: `odoo/addons/sale_stock/models/account_move.py`
   - **Class**: `AccountMove`
   - **Methods**:
     - `_stock_account_get_last_step_stock_moves`
@@ -361,7 +361,7 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
 
 ### 📦 `sale_timesheet`
 
-- **File**: ` addons/sale_timesheet/models/account_move.py`
+- **File**: `odoo/addons/sale_timesheet/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: timesheet_ids (_One2many_), timesheet_count (_Integer_), timesheet_encode_uom_id (_Many2one_), timesheet_total_duration (_Integer_)
   - **Methods**:
@@ -371,21 +371,21 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_link_timesheets_to_invoice`
     - `_get_range_dates`
     - `action_post`
-- **File**: ` addons/sale_timesheet/views/account_invoice_views.xml`
+- **File**: `odoo/addons/sale_timesheet/views/account_invoice_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`account_invoice_view_form_inherit_sale_timesheet`]( addons/sale_timesheet/views/account_invoice_views.xml#L60) -> `account.view_move_form`
+    - [`account_invoice_view_form_inherit_sale_timesheet`](odoo/addons/sale_timesheet/views/account_invoice_views.xml#L60) -> `account.view_move_form`
 
 ### 📦 `snailmail_account`
 
-- **File**: ` addons/snailmail_account/models/account_move.py`
+- **File**: `odoo/addons/snailmail_account/models/account_move.py`
   - **Class**: `AccountMove`
   - **Methods**:
     - `unlink_snailmail_letters (@ondelete)`
 
 ### 📦 `stock_account`
 
-- **File**: ` addons/stock_account/models/account_move.py`
+- **File**: `odoo/addons/stock_account/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: stock_move_ids (_One2many_)
   - **Methods**:
@@ -401,7 +401,7 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
 
 ### 📦 `stock_landed_costs`
 
-- **File**: ` addons/stock_landed_costs/models/account_move.py`
+- **File**: `odoo/addons/stock_landed_costs/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: landed_costs_ids (_One2many_), landed_costs_visible (_Boolean_)
   - **Methods**:
@@ -409,22 +409,22 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `button_create_landed_costs`
     - `action_view_landed_costs`
     - `_update_order_line_info`
-- **File**: ` addons/stock_landed_costs/views/account_move_views.xml`
+- **File**: `odoo/addons/stock_landed_costs/views/account_move_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`account_view_move_form_inherited`]( addons/stock_landed_costs/views/account_move_views.xml#L3) -> `account.view_move_form`
+    - [`account_view_move_form_inherited`](odoo/addons/stock_landed_costs/views/account_move_views.xml#L3) -> `account.view_move_form`
 
 ### 📦 `website_sale`
 
-- **File**: ` addons/website_sale/models/account_move.py`
+- **File**: `odoo/addons/website_sale/models/account_move.py`
   - **Class**: `AccountMove`
   - **Added Fields**: website_id (_Many2one_)
   - **Methods**:
     - `_auto_init`
     - `preview_invoice`
     - `_compute_website_id (@depends)`
-- **File**: ` addons/website_sale/views/account_move_views.xml`
+- **File**: `odoo/addons/website_sale/views/account_move_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`account_move_view_form`]( addons/website_sale/views/account_move_views.xml#L4) -> `account.view_move_form`
+    - [`account_move_view_form`](odoo/addons/website_sale/views/account_move_views.xml#L4) -> `account.view_move_form`
 
