@@ -2,71 +2,71 @@
 
 ## Top-Level Directories
 
-*   **`odoo/`**: The core source code directory. It contains the main Python package (`odoo/`), the startup script (`odoo-bin`), and standard addon modules.
-    *   **`odoo/odoo/`**: The main Python package containing the framework core (ORM, HTTP, Services, CLI).
-    *   **`odoo/addons/`**: Official standard modules (e.g., `account`, `sale`, `base`, `web`).
-    *   **`odoo/odoo-bin`**: The main entry point script to start the server.
-    *   **`odoo/setup/`**: Setup tools and packaging scripts (e.g., `package.py`).
-    *   **`odoo/debian/`**: Debian packaging configuration files (control, rules, service files).
+*   **` `**: The core source code directory. It contains the main Python package (` `), the startup script (`odoo-bin`), and standard addon modules.
+    *   **`  `**: The main Python package containing the framework core (ORM, HTTP, Services, CLI).
+    *   **` addons/`**: Official standard modules (e.g., `account`, `sale`, `base`, `web`).
+    *   **` odoo-bin`**: The main entry point script to start the server.
+    *   **` setup/`**: Setup tools and packaging scripts (e.g., `package.py`).
+    *   **` debian/`**: Debian packaging configuration files (control, rules, service files).
 
 ## Where to Look (Key Entry Points)
 
 ### 1. Server Startup & CLI
-*   **Entry Script**: [`odoo/odoo-bin`](odoo/odoo-bin)
+*   **Entry Script**: [` odoo-bin`]( odoo-bin)
     *   Simple wrapper calling `odoo.cli.main`.
-*   **CLI Argument Parsing**: [`odoo/odoo/cli/server.py`](odoo/odoo/cli/server.py)
+*   **CLI Argument Parsing**: [`  cli/server.py`](  cli/server.py)
     *   **Function**: `main(args)`
     *   **Logic**: Calls `config.parse_config(args)`, `check_postgres_user()`, and finally `server.start()`.
-    *   **Subcommands**: See [`odoo/odoo/cli/command.py`](odoo/odoo/cli/command.py) for efficient subcommand handling (e.g., `scaffold`, `shell`, `deploy`).
-*   **Service Initialization**: [`odoo/odoo/service/server.py`](odoo/odoo/service/server.py)
+    *   **Subcommands**: See [`  cli/command.py`](  cli/command.py) for efficient subcommand handling (e.g., `scaffold`, `shell`, `deploy`).
+*   **Service Initialization**: [`  service/server.py`](  service/server.py)
     *   **Method**: `start()`
     *   **Logic**: Sets up signal handlers, limits memory/CPU, and spawns the HTTP/Cron threads or processes.
 
 ### 2. Module Loading
-*   **Orchestrator**: [`odoo/odoo/modules/loading.py`](odoo/odoo/modules/loading.py)
+*   **Orchestrator**: [`  modules/loading.py`](  modules/loading.py)
     *   **Function**: `load_modules(registry, ...)`
     *   **Logic**: Top-level function. It initializes the database and calls `load_module_graph`.
     *   **Loop**: `load_module_graph` iterates over the dependency graph.
         1.  **Models**: Calls `registry.init_models` to load Python classes.
         2.  **Data**: Calls `load_data` to process XML/CSV files (`manifest['data']`).
         3.  **Demo**: Calls `load_demo` if enabled.
-*   **Manifest Parsing**: [`odoo/odoo/modules/module.py`](odoo/odoo/modules/module.py)
+*   **Manifest Parsing**: [`  modules/module.py`](  modules/module.py)
     *   **Function**: `load_openerp_module` reads the `__manifest__.py`.
 
 ### 3. ORM / Model Registry
-*   **Registry**: [`odoo/odoo/orm/registry.py`](odoo/odoo/orm/registry.py)
+*   **Registry**: [`  orm/registry.py`](  orm/registry.py)
     *   **Class**: `Registry(Mapping)`
     *   **Purpose**: Thread-safe cache of all installed models. One registry per database.
     *   **Key Method**: `init_models` (Schema synchronization).
-*   **Base Model**: [`odoo/odoo/orm/models.py`](odoo/odoo/orm/models.py)
+*   **Base Model**: [`  orm/models.py`](  orm/models.py)
     *   **Class**: `BaseModel` (and its alias `Model`).
     *   **Key Methods**: `create`, `write`, `search`, `browse`.
     *   **Meta**: `MetaModel` handling the magic of field initialization.
 
 ### 4. HTTP Routing & Dispatch
-*   **WSGI Entry**: [`odoo/odoo/http.py`](odoo/odoo/http.py)
+*   **WSGI Entry**: [`  http.py`](  http.py)
     *   **Class**: `Application`
     *   **Method**: `__call__(environ, start_response)`
     *   **Flow**:
         1.  `_serve_static`: If path is in `/static/`.
         2.  `_serve_nodb`: If no db in URL/session (auth='none').
         3.  `_serve_db`: Standard flow. Sets up `request.registry` and `request.env`.
-*   **Dispatching**: [`odoo/odoo/http.py`](odoo/odoo/http.py)
+*   **Dispatching**: [`  http.py`](  http.py)
     *   **Class**: `Dispatcher`
     *   **Method**: `dispatch()`
     *   **Logic**: Resolves the controller method using the routing map and calls it.
-*   **Decorators**: [`odoo/odoo/http.py`](odoo/odoo/http.py)
+*   **Decorators**: [`  http.py`](  http.py)
     *   `@route(...)`: Registers the method in the routing map. The `route_wrapper` handles parameter conversion (JSON/HTTP).
 
 ### 5. Addons Discovery
-*   **Discovery Logic**: [`odoo/odoo/modules/module.py`](odoo/odoo/modules/module.py)
+*   **Discovery Logic**: [`  modules/module.py`](  modules/module.py)
     *   `initialize_sys_path`: Scans the `addons_path` folders.
     *   `get_module_path(module, downloaded=True)`: Returns the absolute path on disk for a given module name.
 
 ## Core Framework Concepts
 
 ### 1. Concurrency Models
-Odoo supports two primary running modes, handled in [`odoo/odoo/service/server.py`](odoo/odoo/service/server.py):
+Odoo supports two primary running modes, handled in [`  service/server.py`](  service/server.py):
 *   **Threaded Server (Dev/Low Load)**:
     *   Default for `odoo-bin` without arguments.
     *   Uses `ThreadedWSGIServerReloadable`.
@@ -82,7 +82,7 @@ Odoo supports two primary running modes, handled in [`odoo/odoo/service/server.p
 
 ### 2. Frontend Architecture (OWL)
 Odoo 19.0 uses **OWL (Odoo Web Library)**, a React-like component framework.
-*   **Location**: [`odoo/addons/web/static/src`](odoo/addons/web/static/src).
+*   **Location**: [` addons/web/static/src`]( addons/web/static/src).
 *   **Core Concepts**:
     *   **Components**: Class-based UI elements (`extends Component`).
     *   **Templates**: QWeb (XML) used for rendering HTML.

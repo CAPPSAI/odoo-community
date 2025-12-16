@@ -31,7 +31,7 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
 
 ### 📦 `delivery`
 
-- **File**: `odoo/addons/delivery/models/sale_order.py`
+- **File**: ` addons/delivery/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: pickup_location_data (_Json_), carrier_id (_Many2one_), delivery_message (_Char_), delivery_set (_Boolean_), recompute_delivery_price (_Boolean_), is_all_service (_Boolean_), shipping_weight (_Float_)
   - **Methods**:
@@ -52,20 +52,20 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_compute_shipping_weight (@depends)`
     - `_get_estimated_weight`
     - `_update_order_line_info`
-- **File**: `odoo/addons/delivery/views/sale_order_views.xml`
+- **File**: ` addons/delivery/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_order_form_with_carrier`](odoo/addons/delivery/views/sale_order_views.xml#L4) -> `sale.view_order_form`
+    - [`view_order_form_with_carrier`]( addons/delivery/views/sale_order_views.xml#L4) -> `sale.view_order_form`
 
 ### 📦 `delivery_mondialrelay`
 
-- **File**: `odoo/addons/delivery_mondialrelay/models/sale_order.py`
+- **File**: ` addons/delivery_mondialrelay/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**: `action_confirm`
 
 ### 📦 `event_booth_sale`
 
-- **File**: `odoo/addons/event_booth_sale/models/sale_order.py`
+- **File**: ` addons/event_booth_sale/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: event_booth_ids (_One2many_), event_booth_count (_Integer_)
   - **Methods**:
@@ -73,31 +73,31 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `action_confirm`
     - `action_view_booth_list`
     - `_get_product_catalog_domain`
-- **File**: `odoo/addons/event_booth_sale/views/sale_order_views.xml`
+- **File**: ` addons/event_booth_sale/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`sale_order_view_form`](odoo/addons/event_booth_sale/views/sale_order_views.xml#L4) -> `event_sale.sale_order_view_form`
+    - [`sale_order_view_form`]( addons/event_booth_sale/views/sale_order_views.xml#L4) -> `event_sale.sale_order_view_form`
 
 ### 📦 `event_sale`
 
-- **File**: `odoo/addons/event_sale/models/sale_order.py`
+- **File**: ` addons/event_sale/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: attendee_count (_Integer_)
   - **Methods**: `write`, `action_confirm`, `action_view_attendee_list`, `_compute_attendee_count`, `_get_product_catalog_domain`
-- **File**: `odoo/addons/event_sale/views/sale_order_views.xml`
+- **File**: ` addons/event_sale/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`sale_order_view_form`](odoo/addons/event_sale/views/sale_order_views.xml#L3) -> `sale.view_order_form`
+    - [`sale_order_view_form`]( addons/event_sale/views/sale_order_views.xml#L3) -> `sale.view_order_form`
 
 ### 📦 `mass_mailing_sale`
 
-- **File**: `odoo/addons/mass_mailing_sale/models/sale_order.py`
+- **File**: ` addons/mass_mailing_sale/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**: `_mailing_get_default_domain`
 
 ### 📦 `partnership`
 
-- **File**: `odoo/addons/partnership/models/sale_order.py`
+- **File**: ` addons/partnership/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: assigned_grade_id (_Many2one_)
   - **Methods**:
@@ -108,7 +108,7 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
 
 ### 📦 `pos_sale`
 
-- **File**: `odoo/addons/pos_sale/models/sale_order.py`
+- **File**: ` addons/pos_sale/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: pos_order_line_ids (_One2many_), pos_order_count (_Integer_), amount_unpaid (_Monetary_)
   - **Methods**:
@@ -121,14 +121,14 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_compute_amount_to_invoice (@depends)`
     - `_compute_amount_invoiced (@depends)`
     - `_prepare_down_payment_line_values_from_base_line`
-- **File**: `odoo/addons/pos_sale/views/sale_order_views.xml`
+- **File**: ` addons/pos_sale/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_order_form_inherit_pos_sale`](odoo/addons/pos_sale/views/sale_order_views.xml#L4) -> `sale.view_order_form`
+    - [`view_order_form_inherit_pos_sale`]( addons/pos_sale/views/sale_order_views.xml#L4) -> `sale.view_order_form`
 
 ### 📦 `repair`
 
-- **File**: `odoo/addons/repair/models/sale_order.py`
+- **File**: ` addons/repair/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: repair_order_ids (_One2many_), repair_count (_Integer_)
   - **Methods**:
@@ -136,39 +136,39 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_action_cancel`
     - `_action_confirm`
     - `action_show_repair`
-- **File**: `odoo/addons/repair/views/sale_order_views.xml`
+- **File**: ` addons/repair/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_sale_order_form_inherit_repair`](odoo/addons/repair/views/sale_order_views.xml#L4) -> `sale.view_order_form`
+    - [`view_sale_order_form_inherit_repair`]( addons/repair/views/sale_order_views.xml#L4) -> `sale.view_order_form`
 
 ### 📦 `sale`
 
-- **File**: `odoo/addons/sale/views/sale_order_views.xml`
+- **File**: ` addons/sale/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`sale_order_kanban_upload`](odoo/addons/sale/views/sale_order_views.xml#L98) -> `view_sale_order_kanban`
-    - [`view_order_tree`](odoo/addons/sale/views/sale_order_views.xml#L179) -> `sale_order_tree`
-    - [`sale_order_list_upload`](odoo/addons/sale/views/sale_order_views.xml#L193) -> `view_order_tree`
-    - [`view_quotation_tree`](odoo/addons/sale/views/sale_order_views.xml#L206) -> `sale_order_tree`
-    - [`view_quotation_tree_with_onboarding`](odoo/addons/sale/views/sale_order_views.xml#L228) -> `view_quotation_tree`
-    - [`view_quotation_kanban_with_onboarding`](odoo/addons/sale/views/sale_order_views.xml#L240) -> `view_sale_order_kanban`
-    - [`sale_order_view_search_inherit_quotation`](odoo/addons/sale/views/sale_order_views.xml#L965) -> `sale.view_sales_order_filter`
-    - [`sale_order_view_search_inherit_sale`](odoo/addons/sale/views/sale_order_views.xml#L984) -> `sale.view_sales_order_filter`
+    - [`sale_order_kanban_upload`]( addons/sale/views/sale_order_views.xml#L98) -> `view_sale_order_kanban`
+    - [`view_order_tree`]( addons/sale/views/sale_order_views.xml#L179) -> `sale_order_tree`
+    - [`sale_order_list_upload`]( addons/sale/views/sale_order_views.xml#L193) -> `view_order_tree`
+    - [`view_quotation_tree`]( addons/sale/views/sale_order_views.xml#L206) -> `sale_order_tree`
+    - [`view_quotation_tree_with_onboarding`]( addons/sale/views/sale_order_views.xml#L228) -> `view_quotation_tree`
+    - [`view_quotation_kanban_with_onboarding`]( addons/sale/views/sale_order_views.xml#L240) -> `view_sale_order_kanban`
+    - [`sale_order_view_search_inherit_quotation`]( addons/sale/views/sale_order_views.xml#L965) -> `sale.view_sales_order_filter`
+    - [`sale_order_view_search_inherit_sale`]( addons/sale/views/sale_order_views.xml#L984) -> `sale.view_sales_order_filter`
 
 ### 📦 `sale_crm`
 
-- **File**: `odoo/addons/sale_crm/models/sale_order.py`
+- **File**: ` addons/sale_crm/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: opportunity_id (_Many2one_)
   - **Methods**: `action_confirm`
-- **File**: `odoo/addons/sale_crm/views/sale_order_views.xml`
+- **File**: ` addons/sale_crm/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`sale_view_inherit123`](odoo/addons/sale_crm/views/sale_order_views.xml#L12) -> `sale.view_order_form`
+    - [`sale_view_inherit123`]( addons/sale_crm/views/sale_order_views.xml#L12) -> `sale.view_order_form`
 
 ### 📦 `sale_edi_ubl`
 
-- **File**: `odoo/addons/sale_edi_ubl/models/sale_order.py`
+- **File**: ` addons/sale_edi_ubl/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**:
     - `_get_edi_builders`
@@ -179,20 +179,20 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
 
 ### 📦 `sale_expense`
 
-- **File**: `odoo/addons/sale_expense/models/sale_order.py`
+- **File**: ` addons/sale_expense/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: expense_ids (_One2many_), expense_count (_Integer_)
   - **Methods**:
     - `_search_display_name (@model)`
     - `_compute_expense_count (@depends)`
-- **File**: `odoo/addons/sale_expense/views/sale_order_views.xml`
+- **File**: ` addons/sale_expense/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`sale_order_form_view_inherit`](odoo/addons/sale_expense/views/sale_order_views.xml#L4) -> `sale.view_order_form`
+    - [`sale_order_form_view_inherit`]( addons/sale_expense/views/sale_order_views.xml#L4) -> `sale.view_order_form`
 
 ### 📦 `sale_gelato`
 
-- **File**: `odoo/addons/sale_gelato/models/sale_order.py`
+- **File**: ` addons/sale_gelato/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**:
     - `_prevent_mixing_gelato_and_non_gelato_products`
@@ -206,7 +206,7 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
 
 ### 📦 `sale_loyalty`
 
-- **File**: `odoo/addons/sale_loyalty/models/sale_order.py`
+- **File**: ` addons/sale_loyalty/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: applied_coupon_ids (_Many2many_), code_enabled_rule_ids (_Many2many_), coupon_point_ids (_One2many_), reward_amount (_Float_), gift_card_count (_Integer_), loyalty_data (_Json_)
   - **Methods**:
@@ -261,14 +261,14 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_try_apply_program`
     - `_try_apply_code`
     - `_validate_order`
-- **File**: `odoo/addons/sale_loyalty/views/sale_order_views.xml`
+- **File**: ` addons/sale_loyalty/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`sale_order_view_form_inherit_sale_loyalty`](odoo/addons/sale_loyalty/views/sale_order_views.xml#L4) -> `sale.view_order_form`
+    - [`sale_order_view_form_inherit_sale_loyalty`]( addons/sale_loyalty/views/sale_order_views.xml#L4) -> `sale.view_order_form`
 
 ### 📦 `sale_loyalty_delivery`
 
-- **File**: `odoo/addons/sale_loyalty_delivery/models/sale_order.py`
+- **File**: ` addons/sale_loyalty_delivery/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**:
     - `_compute_amount_total_without_delivery`
@@ -280,7 +280,7 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
 
 ### 📦 `sale_management`
 
-- **File**: `odoo/addons/sale_management/models/sale_order.py`
+- **File**: ` addons/sale_management/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: sale_order_template_id (_Many2one_)
   - **Methods**:
@@ -296,41 +296,41 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_onchange_partner_id (@onchange)`
     - `_get_confirmation_template`
     - `action_confirm`
-- **File**: `odoo/addons/sale_management/views/sale_order_views.xml`
+- **File**: ` addons/sale_management/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`sale_order_form_quote`](odoo/addons/sale_management/views/sale_order_views.xml#L4) -> `sale.view_order_form`
+    - [`sale_order_form_quote`]( addons/sale_management/views/sale_order_views.xml#L4) -> `sale.view_order_form`
 
 ### 📦 `sale_margin`
 
-- **File**: `odoo/addons/sale_margin/models/sale_order.py`
+- **File**: ` addons/sale_margin/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: margin (_Monetary_), margin_percent (_Float_)
   - **Methods**:
     - `_compute_margin (@depends)`
-- **File**: `odoo/addons/sale_margin/views/sale_order_views.xml`
+- **File**: ` addons/sale_margin/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`sale_margin_sale_order`](odoo/addons/sale_margin/views/sale_order_views.xml#L4) -> `sale.view_order_form`
-    - [`sale_margin_sale_order_pivot`](odoo/addons/sale_margin/views/sale_order_views.xml#L35) -> `sale.view_sale_order_pivot`
-    - [`sale_margin_sale_order_graph`](odoo/addons/sale_margin/views/sale_order_views.xml#L46) -> `sale.view_sale_order_graph`
+    - [`sale_margin_sale_order`]( addons/sale_margin/views/sale_order_views.xml#L4) -> `sale.view_order_form`
+    - [`sale_margin_sale_order_pivot`]( addons/sale_margin/views/sale_order_views.xml#L35) -> `sale.view_sale_order_pivot`
+    - [`sale_margin_sale_order_graph`]( addons/sale_margin/views/sale_order_views.xml#L46) -> `sale.view_sale_order_graph`
 
 ### 📦 `sale_mrp`
 
-- **File**: `odoo/addons/sale_mrp/models/sale_order.py`
+- **File**: ` addons/sale_mrp/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: mrp_production_count (_Integer_), mrp_production_ids (_Many2many_)
   - **Methods**:
     - `_compute_mrp_production_ids (@depends)`
     - `action_view_mrp_production`
-- **File**: `odoo/addons/sale_mrp/views/sale_order_views.xml`
+- **File**: ` addons/sale_mrp/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`sale_order_form_mrp`](odoo/addons/sale_mrp/views/sale_order_views.xml#L4) -> `sale.view_order_form`
+    - [`sale_order_form_mrp`]( addons/sale_mrp/views/sale_order_views.xml#L4) -> `sale.view_order_form`
 
 ### 📦 `sale_pdf_quote_builder`
 
-- **File**: `odoo/addons/sale_pdf_quote_builder/models/sale_order.py`
+- **File**: ` addons/sale_pdf_quote_builder/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: available_quotation_document_ids (_Many2many_), is_pdf_quote_builder_available (_Boolean_), quotation_document_ids (_Many2many_), customizable_pdf_form_fields (_Json_)
   - **Methods**:
@@ -339,14 +339,14 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_compute_is_pdf_quote_builder_available (@depends)`
     - `_onchange_sale_order_template_id (@onchange)`
     - `get_update_included_pdf_params`
-- **File**: `odoo/addons/sale_pdf_quote_builder/views/sale_order_views.xml`
+- **File**: ` addons/sale_pdf_quote_builder/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`sale_order_form_inherit_sale_pdf_quote_builder`](odoo/addons/sale_pdf_quote_builder/views/sale_order_views.xml#L4) -> `sale_management.sale_order_form_quote`
+    - [`sale_order_form_inherit_sale_pdf_quote_builder`]( addons/sale_pdf_quote_builder/views/sale_order_views.xml#L4) -> `sale_management.sale_order_form_quote`
 
 ### 📦 `sale_product_matrix`
 
-- **File**: `odoo/addons/sale_product_matrix/models/sale_order.py`
+- **File**: ` addons/sale_product_matrix/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: report_grids (_Boolean_), grid_product_tmpl_id (_Many2one_), grid_update (_Boolean_), grid (_Char_)
   - **Methods**:
@@ -354,14 +354,14 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_apply_grid (@onchange)`
     - `_get_matrix`
     - `get_report_matrixes`
-- **File**: `odoo/addons/sale_product_matrix/views/sale_order_views.xml`
+- **File**: ` addons/sale_product_matrix/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_order_form_with_variant_grid`](odoo/addons/sale_product_matrix/views/sale_order_views.xml#L4) -> `sale.view_order_form`
+    - [`view_order_form_with_variant_grid`]( addons/sale_product_matrix/views/sale_order_views.xml#L4) -> `sale.view_order_form`
 
 ### 📦 `sale_project`
 
-- **File**: `odoo/addons/sale_project/models/sale_order.py`
+- **File**: ` addons/sale_project/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: tasks_ids (_Many2many_), tasks_count (_Integer_), visible_project (_Boolean_), project_ids (_Many2many_), project_count (_Integer_), milestone_count (_Integer_), is_product_milestone (_Boolean_), show_create_project_button (_Boolean_), show_project_button (_Boolean_), closed_task_count (_Integer_), completed_task_percentage (_Float_), project_id (_Many2one_), project_account_id (_Many2one_)
   - **Methods**:
@@ -383,16 +383,16 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_compute_completed_task_percentage`
     - `action_confirm`
     - `get_first_service_line`
-- **File**: `odoo/addons/sale_project/views/sale_order_views.xml`
+- **File**: ` addons/sale_project/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_order_form_inherit_sale_project`](odoo/addons/sale_project/views/sale_order_views.xml#L4) -> `sale.view_order_form`
-    - [`view_sales_order_filter_inherit_sale_project`](odoo/addons/sale_project/views/sale_order_views.xml#L52) -> `sale.view_sales_order_filter`
-    - [`view_order_simple_form`](odoo/addons/sale_project/views/sale_order_views.xml#L72) -> `sale.view_order_form`
+    - [`view_order_form_inherit_sale_project`]( addons/sale_project/views/sale_order_views.xml#L4) -> `sale.view_order_form`
+    - [`view_sales_order_filter_inherit_sale_project`]( addons/sale_project/views/sale_order_views.xml#L52) -> `sale.view_sales_order_filter`
+    - [`view_order_simple_form`]( addons/sale_project/views/sale_order_views.xml#L72) -> `sale.view_order_form`
 
 ### 📦 `sale_purchase`
 
-- **File**: `odoo/addons/sale_purchase/models/sale_order.py`
+- **File**: ` addons/sale_purchase/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: purchase_order_count (_Integer_)
   - **Methods**:
@@ -402,14 +402,14 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `action_view_purchase_orders`
     - `_get_purchase_orders`
     - `_activity_cancel_on_purchase`
-- **File**: `odoo/addons/sale_purchase/views/sale_order_views.xml`
+- **File**: ` addons/sale_purchase/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`sale_order_inherited_form_purchase`](odoo/addons/sale_purchase/views/sale_order_views.xml#L4) -> `sale.view_order_form`
+    - [`sale_order_inherited_form_purchase`]( addons/sale_purchase/views/sale_order_views.xml#L4) -> `sale.view_order_form`
 
 ### 📦 `sale_purchase_stock`
 
-- **File**: `odoo/addons/sale_purchase_stock/models/sale_order.py`
+- **File**: ` addons/sale_purchase_stock/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**:
     - `_compute_purchase_order_count (@depends)`
@@ -417,7 +417,7 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
 
 ### 📦 `sale_stock`
 
-- **File**: `odoo/addons/sale_stock/models/sale_order.py`
+- **File**: ` addons/sale_stock/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: incoterm (_Many2one_), incoterm_location (_Char_), picking_policy (_Selection_), warehouse_id (_Many2one_), picking_ids (_One2many_), delivery_count (_Integer_), delivery_status (_Selection_), late_availability (_Boolean_), stock_reference_ids (_Many2many_), effective_date (_Datetime_), expected_date (_Datetime_), json_popover (_Char_), show_json_popover (_Boolean_)
   - **Methods**:
@@ -443,17 +443,17 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_is_display_stock_in_catalog`
     - `_add_reference`
     - `_remove_reference`
-- **File**: `odoo/addons/sale_stock/views/sale_order_views.xml`
+- **File**: ` addons/sale_stock/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_order_form_inherit_sale_stock`](odoo/addons/sale_stock/views/sale_order_views.xml#L4) -> `sale.view_order_form`
-    - [`sale_order_tree`](odoo/addons/sale_stock/views/sale_order_views.xml#L65) -> `sale.sale_order_tree`
-    - [`view_order_tree`](odoo/addons/sale_stock/views/sale_order_views.xml#L82) -> `sale.view_order_tree`
-    - [`sale_stock_sale_order_view_search_inherit`](odoo/addons/sale_stock/views/sale_order_views.xml#L115) -> `sale.sale_order_view_search_inherit_sale`
+    - [`view_order_form_inherit_sale_stock`]( addons/sale_stock/views/sale_order_views.xml#L4) -> `sale.view_order_form`
+    - [`sale_order_tree`]( addons/sale_stock/views/sale_order_views.xml#L65) -> `sale.sale_order_tree`
+    - [`view_order_tree`]( addons/sale_stock/views/sale_order_views.xml#L82) -> `sale.view_order_tree`
+    - [`sale_stock_sale_order_view_search_inherit`]( addons/sale_stock/views/sale_order_views.xml#L115) -> `sale.sale_order_view_search_inherit_sale`
 
 ### 📦 `sale_timesheet`
 
-- **File**: `odoo/addons/sale_timesheet/models/sale_order.py`
+- **File**: ` addons/sale_timesheet/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: timesheet_count (_Float_), timesheet_encode_uom_id (_Many2one_), timesheet_total_duration (_Integer_), show_hours_recorded_button (_Boolean_)
   - **Methods**:
@@ -467,46 +467,46 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `action_view_timesheet`
     - `_reset_has_displayed_warning_upsell_order_lines`
     - `_create_invoices`
-- **File**: `odoo/addons/sale_timesheet/views/sale_order_views.xml`
+- **File**: ` addons/sale_timesheet/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_order_form_inherit_sale_timesheet`](odoo/addons/sale_timesheet/views/sale_order_views.xml#L4) -> `sale_project.view_order_form_inherit_sale_project`
+    - [`view_order_form_inherit_sale_timesheet`]( addons/sale_timesheet/views/sale_order_views.xml#L4) -> `sale_project.view_order_form_inherit_sale_project`
 
 ### 📦 `stock_delivery`
 
-- **File**: `odoo/addons/stock_delivery/models/sale_order.py`
+- **File**: ` addons/stock_delivery/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**: `set_delivery_line`, `_create_delivery_line`, `_format_currency_amount`
 
 ### 📦 `stock_dropshipping`
 
-- **File**: `odoo/addons/stock_dropshipping/models/sale.py`
+- **File**: ` addons/stock_dropshipping/models/sale.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: dropship_picking_count (_Integer_)
   - **Methods**:
     - `_compute_picking_ids (@depends)`
     - `action_view_delivery`
     - `action_view_dropship`
-- **File**: `odoo/addons/stock_dropshipping/views/sale_order_views.xml`
+- **File**: ` addons/stock_dropshipping/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_order_form_inherit_sale_stock`](odoo/addons/stock_dropshipping/views/sale_order_views.xml#L4) -> `sale_stock.view_order_form_inherit_sale_stock`
+    - [`view_order_form_inherit_sale_stock`]( addons/stock_dropshipping/views/sale_order_views.xml#L4) -> `sale_stock.view_order_form_inherit_sale_stock`
 
 ### 📦 `website_event_booth_sale`
 
-- **File**: `odoo/addons/website_event_booth_sale/models/sale_order.py`
+- **File**: ` addons/website_event_booth_sale/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**: `_cart_find_product_line`, `_verify_updated_quantity`, `_prepare_order_line_values`, `_prepare_order_line_update_values`
 
 ### 📦 `website_event_sale`
 
-- **File**: `odoo/addons/website_event_sale/models/sale_order.py`
+- **File**: ` addons/website_event_sale/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**: `_cart_find_product_line`, `_verify_updated_quantity`, `_prepare_order_line_values`, `_cart_update_order_line`, `_filter_can_send_abandoned_cart_mail`
 
 ### 📦 `website_sale`
 
-- **File**: `odoo/addons/website_sale/models/sale_order.py`
+- **File**: ` addons/website_sale/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: website_id (_Many2one_), cart_recovery_email_sent (_Boolean_), shop_warning (_Char_), website_order_line (_One2many_), amount_delivery (_Monetary_), cart_quantity (_Integer_), only_services (_Boolean_), is_abandoned_cart (_Boolean_)
   - **Methods**:
@@ -560,17 +560,17 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
     - `_is_cart_ready`
     - `_check_cart_is_ready_to_be_paid`
     - `_recompute_cart`
-- **File**: `odoo/addons/website_sale/views/sale_order_views.xml`
+- **File**: ` addons/website_sale/views/sale_order_views.xml`
   - **Class**: `XML View Override`
   - **Modified Views**:
-    - [`view_sales_order_filter_ecommerce`](odoo/addons/website_sale/views/sale_order_views.xml#L3) -> `sale.view_sales_order_filter`
-    - [`view_sales_order_filter_ecommerce_unpaid`](odoo/addons/website_sale/views/sale_order_views.xml#L26) -> `sale.view_sales_order_filter`
-    - [`sale_order_view_form`](odoo/addons/website_sale/views/sale_order_views.xml#L153) -> `sale.view_order_form`
-    - [`sale_order_tree`](odoo/addons/website_sale/views/sale_order_views.xml#L192) -> `sale.sale_order_tree`
+    - [`view_sales_order_filter_ecommerce`]( addons/website_sale/views/sale_order_views.xml#L3) -> `sale.view_sales_order_filter`
+    - [`view_sales_order_filter_ecommerce_unpaid`]( addons/website_sale/views/sale_order_views.xml#L26) -> `sale.view_sales_order_filter`
+    - [`sale_order_view_form`]( addons/website_sale/views/sale_order_views.xml#L153) -> `sale.view_order_form`
+    - [`sale_order_tree`]( addons/website_sale/views/sale_order_views.xml#L192) -> `sale.sale_order_tree`
 
 ### 📦 `website_sale_collect`
 
-- **File**: `odoo/addons/website_sale_collect/models/sale_order.py`
+- **File**: ` addons/website_sale_collect/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**:
     - `_compute_warehouse_id`
@@ -587,13 +587,13 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
 
 ### 📦 `website_sale_gelato`
 
-- **File**: `odoo/addons/website_sale_gelato/models/sale_order.py`
+- **File**: ` addons/website_sale_gelato/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**: `_verify_updated_quantity`
 
 ### 📦 `website_sale_loyalty`
 
-- **File**: `odoo/addons/website_sale_loyalty/models/sale_order.py`
+- **File**: ` addons/website_sale_loyalty/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Added Fields**: disabled_auto_rewards (_Many2many_)
   - **Methods**:
@@ -621,25 +621,25 @@ _Modules that implement business logic (Stock, Sales, EDI, etc.)_
 
 ### 📦 `website_sale_mondialrelay`
 
-- **File**: `odoo/addons/website_sale_mondialrelay/models/sale_order.py`
+- **File**: ` addons/website_sale_mondialrelay/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**: `_check_cart_is_ready_to_be_paid`, `_compute_partner_shipping_id`
 
 ### 📦 `website_sale_mrp`
 
-- **File**: `odoo/addons/website_sale_mrp/models/sale_order.py`
+- **File**: ` addons/website_sale_mrp/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**: `_get_unavailable_quantity_from_kits`
 
 ### 📦 `website_sale_slides`
 
-- **File**: `odoo/addons/website_sale_slides/models/sale_order.py`
+- **File**: ` addons/website_sale_slides/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**: `_action_confirm`, `_verify_updated_quantity`
 
 ### 📦 `website_sale_stock`
 
-- **File**: `odoo/addons/website_sale_stock/models/sale_order.py`
+- **File**: ` addons/website_sale_stock/models/sale_order.py`
   - **Class**: `SaleOrder`
   - **Methods**:
     - `_compute_warehouse_id`

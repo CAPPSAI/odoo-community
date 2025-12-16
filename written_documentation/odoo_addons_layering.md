@@ -8,25 +8,25 @@ This document explains how Odoo loads modules in tiers, from the generic framewo
 
 ### 1. The Framework Core (Low-Level Plumbing)
 At the bottom lies the Odoo Framework itself. These modules provide the technical engine but no business logic.
-*   **Examples**: [`base`](odoo/odoo/addons/base) (ORM, Users, Views), [`web`](odoo/addons/web) (The Javascript Web Client), [`mail`](odoo/addons/mail) (Chatter & Activities).
+*   **Examples**: [`base`](  addons/base) (ORM, Users, Views), [`web`]( addons/web) (The Javascript Web Client), [`mail`]( addons/mail) (Chatter & Activities).
 *   **Role**: They define "How Odoo works" (Models, Fields, XML parsing).
 
 ### 2. Standard Business Apps (Departmental Logic)
 On top of the framework, Odoo adds generic business concepts. These are the "Apps" you install.
-*   **Examples**: [`sale`](odoo/addons/sale), [`account`](odoo/addons/account), [`stock`](odoo/addons/stock), [`purchase`](odoo/addons/purchase).
+*   **Examples**: [`sale`]( addons/sale), [`account`]( addons/account), [`stock`]( addons/stock), [`purchase`]( addons/purchase).
 *   **Role**: They define "What Odoo does" (Orders, Invoices, Pickings). At this level, the logic is universally applicable globally (e.g., "An invoice has lines and a total").
 
 ### 3. The "Bridge" Layer (Integration)
 Odoo is famous for being "integrated". This doesn't happen by magic; it happens via specific *Bridge Modules*.
 *   **Examples**:
-    *   [`sale_stock`](odoo/addons/sale_stock): Connects Sales to Inventory. (Without this, confirming a Sales Order creates no Delivery Order).
-    *   [`purchase_stock`](odoo/addons/purchase_stock): Connects Purchase to Inventory.
-    *   [`sale_management`](odoo/addons/sale_management): Adds optional Sales features like Upselling.
+    *   [`sale_stock`]( addons/sale_stock): Connects Sales to Inventory. (Without this, confirming a Sales Order creates no Delivery Order).
+    *   [`purchase_stock`]( addons/purchase_stock): Connects Purchase to Inventory.
+    *   [`sale_management`]( addons/sale_management): Adds optional Sales features like Upselling.
 *   **Role**: These modules are *auto-installed* when both dependencies are present. They contain the glue code (overriding `action_confirm` to trigger both apps).
 
 ### 4. Localization (L10n) & Enterprise
 Business rules vary by country. The "Localization" layer adapts the generic apps to local laws.
-*   **Examples**: [`l10n_us`](odoo/addons/l10n_us), [`l10n_syscohada`](odoo/addons/l10n_syscohada), [`account_edi`](odoo/addons/account_edi).
+*   **Examples**: [`l10n_us`]( addons/l10n_us), [`l10n_syscohada`]( addons/l10n_syscohada), [`account_edi`]( addons/account_edi).
 *   **Role**: They install Chart of Accounts, Taxes, and legal Reports. They often override core methods (like `_post`) to enforce compliance (e.g., real-time government reporting).
 
 ### 5. Customization (The "Last Mile")

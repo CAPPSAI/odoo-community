@@ -3,7 +3,7 @@
 In Odoo, **Dependency Injection (DI)** is implemented through the `Environment` (`self.env`) and the **Model Registry**. Instead of manually passing database cursors, user IDs, or configuration to every method, Odoo bundles these into a single context object—the `Environment`—which acts as both a **Service Locator** and a **Dependency Container**.
 
 ## 1. The Environment (`env`)
-**File:** [`odoo/odoo/orm/environments.py`](odoo/odoo/orm/environments.py)
+**File:** [`  orm/environments.py`](  orm/environments.py)
 
 The `Environment` is immutable (mostly) and accompanies every recordset. It creates a scope for interaction with the database.
 
@@ -15,7 +15,7 @@ The `Environment` is immutable (mostly) and accompanies every recordset. It crea
 *   **`env.company`** / **`env.companies`**: The active company and allowed companies for the current request context.
 
 ## 2. The Model Registry
-**File:** [`odoo/odoo/orm/registry.py`](odoo/odoo/orm/registry.py)
+**File:** [`  orm/registry.py`](  orm/registry.py)
 
 The `Registry` is a singleton (per database) that holds the definitions of all model **Classes** (e.g., `SaleOrder`, `ResPartner`). It maps model names (strings like `"sale.order"`) to Python classes.
 
@@ -29,7 +29,7 @@ When you write `self.env['sale.order']`, the following happens:
 This is why `self.env['sale.order']` is not just a class; it is an *empty recordset* bound to the current environment. Any method called on it has immediate access to `self.env.cr` and `self.env.uid`.
 
 ### Code Reference
-In [`odoo/odoo/orm/environments.py`](odoo/odoo/orm/environments.py):
+In [`  orm/environments.py`](  orm/environments.py):
 ```python
 def __getitem__(self, model_name):
     """ Return an empty recordset from the given model. """
@@ -142,4 +142,4 @@ graph TD
 
 ## 6. References
 *   [Odoo 19.0 Developer Documentation: ORM / Environment](https://www.odoo.com/documentation/19.0/developer/reference/backend/orm.html#environment)
-*   [Odoo 19.0 Developer Documentation: Registry (Internal)](https://github.com/odoo/odoo/blob/19.0/odoo/modules/registry.py)
+*   [Odoo 19.0 Developer Documentation: Registry (Internal)](https://github.com/  blob/19.0/ modules/registry.py)
