@@ -12,7 +12,7 @@ Official Documentation: [Chapter 12: Inheritance](https://www.odoo.com/documenta
 **Database Effect:** No new table. Columns are added to the existing table.
 
 ### Example: Extending Partners
-In [` addons/account/models/partner.py`]( addons/account/models/partner.py), the `account` module adds accounting fields to the standard `res.partner` model.
+In [`odoo/addons/account/models/partner.py`](odoo/addons/account/models/partner.py), the `account` module adds accounting fields to the standard `res.partner` model.
 
 ```python
 class ResPartner(models.Model):
@@ -28,7 +28,7 @@ class ResPartner(models.Model):
 **Database Effect:** Separate table. A foreign key links to the parent table.
 
 ### Example: Product Variants
-In [` addons/product/models/product_product.py`]( addons/product/models/product_product.py), a specific Variant (`product.product`) delegates to a Template (`product.template`).
+In [`odoo/addons/product/models/product_product.py`](odoo/addons/product/models/product_product.py), a specific Variant (`product.product`) delegates to a Template (`product.template`).
 
 ```python
 class ProductProduct(models.Model):
@@ -45,7 +45,7 @@ class ProductProduct(models.Model):
 **Database Effect:** No table for the mixin itself. Fields are copied into the child model's table.
 
 ### Example: Mail Thread
-In [` addons/mail/models/mail_thread.py`]( addons/mail/models/mail_thread.py), `MailThread` provides messaging capabilities.
+In [`odoo/addons/mail/models/mail_thread.py`](odoo/addons/mail/models/mail_thread.py), `MailThread` provides messaging capabilities.
 
 ```python
 class MailThread(models.AbstractModel):

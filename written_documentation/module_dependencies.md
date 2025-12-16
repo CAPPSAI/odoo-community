@@ -4,78 +4,78 @@
 
 | Module | Dependents |
 |---|---|
-| [`account`]( addons/account) | 149 |
-| [`base`](  addons/base) | 44 |
-| [`mail`]( addons/mail) | 43 |
-| [`account_edi_ubl_cii`]( addons/account_edi_ubl_cii) | 42 |
-| [`base_vat`]( addons/base_vat) | 40 |
-| [`web`]( addons/web) | 37 |
-| [`point_of_sale`]( addons/point_of_sale) | 36 |
-| [`base_iban`]( addons/base_iban) | 25 |
-| [`payment`]( addons/payment) | 21 |
-| [`sale`]( addons/sale) | 21 |
-| [`website`]( addons/website) | 20 |
-| [`base_setup`]( addons/base_setup) | 19 |
-| [`hr`]( addons/hr) | 18 |
-| [`portal`]( addons/portal) | 17 |
-| [`sms`]( addons/sms) | 17 |
-| [`l10n_syscohada`]( addons/l10n_syscohada) | 17 |
-| [`website_sale`]( addons/website_sale) | 16 |
-| [`crm`]( addons/crm) | 15 |
-| [`digest`]( addons/digest) | 13 |
-| [`spreadsheet_dashboard`]( addons/spreadsheet_dashboard) | 13 |
-| [`mass_mailing`]( addons/mass_mailing) | 13 |
-| [`stock`]( addons/stock) | 11 |
-| [`web_tour`]( addons/web_tour) | 10 |
-| [`stock_account`]( addons/stock_account) | 10 |
-| [`sale_stock`]( addons/sale_stock) | 10 |
-| [`mrp`]( addons/mrp) | 10 |
-| [`resource`]( addons/resource) | 9 |
-| [`calendar`]( addons/calendar) | 9 |
-| [`event`]( addons/event) | 9 |
-| [`sale_management`]( addons/sale_management) | 9 |
+| [`account`](odoo/addons/account) | 149 |
+| [`base`](odoo/odoo/addons/base) | 44 |
+| [`mail`](odoo/addons/mail) | 43 |
+| [`account_edi_ubl_cii`](odoo/addons/account_edi_ubl_cii) | 42 |
+| [`base_vat`](odoo/addons/base_vat) | 40 |
+| [`web`](odoo/addons/web) | 37 |
+| [`point_of_sale`](odoo/addons/point_of_sale) | 36 |
+| [`base_iban`](odoo/addons/base_iban) | 25 |
+| [`payment`](odoo/addons/payment) | 21 |
+| [`sale`](odoo/addons/sale) | 21 |
+| [`website`](odoo/addons/website) | 20 |
+| [`base_setup`](odoo/addons/base_setup) | 19 |
+| [`hr`](odoo/addons/hr) | 18 |
+| [`portal`](odoo/addons/portal) | 17 |
+| [`sms`](odoo/addons/sms) | 17 |
+| [`l10n_syscohada`](odoo/addons/l10n_syscohada) | 17 |
+| [`website_sale`](odoo/addons/website_sale) | 16 |
+| [`crm`](odoo/addons/crm) | 15 |
+| [`digest`](odoo/addons/digest) | 13 |
+| [`spreadsheet_dashboard`](odoo/addons/spreadsheet_dashboard) | 13 |
+| [`mass_mailing`](odoo/addons/mass_mailing) | 13 |
+| [`stock`](odoo/addons/stock) | 11 |
+| [`web_tour`](odoo/addons/web_tour) | 10 |
+| [`stock_account`](odoo/addons/stock_account) | 10 |
+| [`sale_stock`](odoo/addons/sale_stock) | 10 |
+| [`mrp`](odoo/addons/mrp) | 10 |
+| [`resource`](odoo/addons/resource) | 9 |
+| [`calendar`](odoo/addons/calendar) | 9 |
+| [`event`](odoo/addons/event) | 9 |
+| [`sale_management`](odoo/addons/sale_management) | 9 |
 
 ## Likely Base Layers
 Modules with many dependents but few dependencies (<= 3).
 
 | Module | Dependents | Dependencies |
 |---|---|---|
-| [`base`](  addons/base) | 44 | None |
-| [`account_edi_ubl_cii`]( addons/account_edi_ubl_cii) | 42 | [`account`]( addons/account) |
-| [`base_vat`]( addons/base_vat) | 40 | [`account`]( addons/account) |
-| [`web`]( addons/web) | 37 | [`base`](  addons/base) |
-| [`base_iban`]( addons/base_iban) | 25 | [`account`]( addons/account), [`web`]( addons/web) |
-| [`payment`]( addons/payment) | 21 | [`onboarding`]( addons/onboarding), [`portal`]( addons/portal) |
-| [`sale`]( addons/sale) | 21 | [`sales_team`]( addons/sales_team), [`account_payment`]( addons/account_payment), [`utm`]( addons/utm) |
-| [`base_setup`]( addons/base_setup) | 19 | [`base`](  addons/base), [`web`]( addons/web) |
-| [`l10n_syscohada`]( addons/l10n_syscohada) | 17 | [`account`]( addons/account) |
-| [`digest`]( addons/digest) | 13 | [`mail`]( addons/mail), [`portal`]( addons/portal), [`resource`]( addons/resource) |
-| [`spreadsheet_dashboard`]( addons/spreadsheet_dashboard) | 13 | [`spreadsheet`]( addons/spreadsheet) |
-| [`stock`]( addons/stock) | 11 | [`product`]( addons/product), [`barcodes_gs1_nomenclature`]( addons/barcodes_gs1_nomenclature), [`digest`]( addons/digest) |
-| [`web_tour`]( addons/web_tour) | 10 | [`web`]( addons/web) |
-| [`stock_account`]( addons/stock_account) | 10 | [`stock`]( addons/stock), [`account`]( addons/account) |
-| [`sale_stock`]( addons/sale_stock) | 10 | [`sale`]( addons/sale), [`stock_account`]( addons/stock_account) |
-| [`mrp`]( addons/mrp) | 10 | [`product`]( addons/product), [`stock`]( addons/stock), [`resource`]( addons/resource) |
-| [`resource`]( addons/resource) | 9 | [`base`](  addons/base), [`web`]( addons/web) |
-| [`calendar`]( addons/calendar) | 9 | [`base`](  addons/base), [`mail`]( addons/mail) |
-| [`sale_management`]( addons/sale_management) | 9 | [`sale`]( addons/sale), [`digest`]( addons/digest) |
-| [`utm`]( addons/utm) | 8 | [`base`](  addons/base), [`web`]( addons/web) |
-| [`hr_holidays`]( addons/hr_holidays) | 8 | [`hr`]( addons/hr), [`calendar`]( addons/calendar), [`resource`]( addons/resource) |
-| [`html_editor`]( addons/html_editor) | 8 | [`base`](  addons/base), [`bus`]( addons/bus), [`web`]( addons/web) |
-| [`l10n_gcc_invoice`]( addons/l10n_gcc_invoice) | 8 | [`account`]( addons/account) |
-| [`l10n_din5008`]( addons/l10n_din5008) | 8 | [`account`]( addons/account) |
-| [`account_debit_note`]( addons/account_debit_note) | 8 | [`account`]( addons/account) |
-| [`contacts`]( addons/contacts) | 7 | [`base`](  addons/base), [`mail`]( addons/mail) |
-| [`iap_mail`]( addons/iap_mail) | 7 | [`iap`]( addons/iap), [`mail`]( addons/mail) |
-| [`l10n_latam_base`]( addons/l10n_latam_base) | 7 | [`contacts`]( addons/contacts), [`base_vat`]( addons/base_vat) |
-| [`pos_restaurant`]( addons/pos_restaurant) | 7 | [`point_of_sale`]( addons/point_of_sale) |
-| [`purchase`]( addons/purchase) | 7 | [`account`]( addons/account) |
-| [`purchase_stock`]( addons/purchase_stock) | 7 | [`stock_account`]( addons/stock_account), [`purchase`]( addons/purchase) |
-| [`mass_mailing_sms`]( addons/mass_mailing_sms) | 7 | [`portal`]( addons/portal), [`mass_mailing`]( addons/mass_mailing), [`sms`]( addons/sms) |
-| [`pos_self_order`]( addons/pos_self_order) | 7 | [`pos_restaurant`]( addons/pos_restaurant), [`http_routing`]( addons/http_routing), [`link_tracker`]( addons/link_tracker) |
-| [`auth_signup`]( addons/auth_signup) | 6 | [`base_setup`]( addons/base_setup), [`mail`]( addons/mail), [`web`]( addons/web) |
-| [`phone_validation`]( addons/phone_validation) | 6 | [`base`](  addons/base), [`mail`]( addons/mail) |
-| [`event_sale`]( addons/event_sale) | 6 | [`event_product`]( addons/event_product), [`sale_management`]( addons/sale_management) |
+| [`base`](odoo/odoo/addons/base) | 44 | None |
+| [`account_edi_ubl_cii`](odoo/addons/account_edi_ubl_cii) | 42 | [`account`](odoo/addons/account) |
+| [`base_vat`](odoo/addons/base_vat) | 40 | [`account`](odoo/addons/account) |
+| [`web`](odoo/addons/web) | 37 | [`base`](odoo/odoo/addons/base) |
+| [`base_iban`](odoo/addons/base_iban) | 25 | [`account`](odoo/addons/account), [`web`](odoo/addons/web) |
+| [`payment`](odoo/addons/payment) | 21 | [`onboarding`](odoo/addons/onboarding), [`portal`](odoo/addons/portal) |
+| [`sale`](odoo/addons/sale) | 21 | [`sales_team`](odoo/addons/sales_team), [`account_payment`](odoo/addons/account_payment), [`utm`](odoo/addons/utm) |
+| [`base_setup`](odoo/addons/base_setup) | 19 | [`base`](odoo/odoo/addons/base), [`web`](odoo/addons/web) |
+| [`l10n_syscohada`](odoo/addons/l10n_syscohada) | 17 | [`account`](odoo/addons/account) |
+| [`digest`](odoo/addons/digest) | 13 | [`mail`](odoo/addons/mail), [`portal`](odoo/addons/portal), [`resource`](odoo/addons/resource) |
+| [`spreadsheet_dashboard`](odoo/addons/spreadsheet_dashboard) | 13 | [`spreadsheet`](odoo/addons/spreadsheet) |
+| [`stock`](odoo/addons/stock) | 11 | [`product`](odoo/addons/product), [`barcodes_gs1_nomenclature`](odoo/addons/barcodes_gs1_nomenclature), [`digest`](odoo/addons/digest) |
+| [`web_tour`](odoo/addons/web_tour) | 10 | [`web`](odoo/addons/web) |
+| [`stock_account`](odoo/addons/stock_account) | 10 | [`stock`](odoo/addons/stock), [`account`](odoo/addons/account) |
+| [`sale_stock`](odoo/addons/sale_stock) | 10 | [`sale`](odoo/addons/sale), [`stock_account`](odoo/addons/stock_account) |
+| [`mrp`](odoo/addons/mrp) | 10 | [`product`](odoo/addons/product), [`stock`](odoo/addons/stock), [`resource`](odoo/addons/resource) |
+| [`resource`](odoo/addons/resource) | 9 | [`base`](odoo/odoo/addons/base), [`web`](odoo/addons/web) |
+| [`calendar`](odoo/addons/calendar) | 9 | [`base`](odoo/odoo/addons/base), [`mail`](odoo/addons/mail) |
+| [`sale_management`](odoo/addons/sale_management) | 9 | [`sale`](odoo/addons/sale), [`digest`](odoo/addons/digest) |
+| [`utm`](odoo/addons/utm) | 8 | [`base`](odoo/odoo/addons/base), [`web`](odoo/addons/web) |
+| [`hr_holidays`](odoo/addons/hr_holidays) | 8 | [`hr`](odoo/addons/hr), [`calendar`](odoo/addons/calendar), [`resource`](odoo/addons/resource) |
+| [`html_editor`](odoo/addons/html_editor) | 8 | [`base`](odoo/odoo/addons/base), [`bus`](odoo/addons/bus), [`web`](odoo/addons/web) |
+| [`l10n_gcc_invoice`](odoo/addons/l10n_gcc_invoice) | 8 | [`account`](odoo/addons/account) |
+| [`l10n_din5008`](odoo/addons/l10n_din5008) | 8 | [`account`](odoo/addons/account) |
+| [`account_debit_note`](odoo/addons/account_debit_note) | 8 | [`account`](odoo/addons/account) |
+| [`contacts`](odoo/addons/contacts) | 7 | [`base`](odoo/odoo/addons/base), [`mail`](odoo/addons/mail) |
+| [`iap_mail`](odoo/addons/iap_mail) | 7 | [`iap`](odoo/addons/iap), [`mail`](odoo/addons/mail) |
+| [`l10n_latam_base`](odoo/addons/l10n_latam_base) | 7 | [`contacts`](odoo/addons/contacts), [`base_vat`](odoo/addons/base_vat) |
+| [`pos_restaurant`](odoo/addons/pos_restaurant) | 7 | [`point_of_sale`](odoo/addons/point_of_sale) |
+| [`purchase`](odoo/addons/purchase) | 7 | [`account`](odoo/addons/account) |
+| [`purchase_stock`](odoo/addons/purchase_stock) | 7 | [`stock_account`](odoo/addons/stock_account), [`purchase`](odoo/addons/purchase) |
+| [`mass_mailing_sms`](odoo/addons/mass_mailing_sms) | 7 | [`portal`](odoo/addons/portal), [`mass_mailing`](odoo/addons/mass_mailing), [`sms`](odoo/addons/sms) |
+| [`pos_self_order`](odoo/addons/pos_self_order) | 7 | [`pos_restaurant`](odoo/addons/pos_restaurant), [`http_routing`](odoo/addons/http_routing), [`link_tracker`](odoo/addons/link_tracker) |
+| [`auth_signup`](odoo/addons/auth_signup) | 6 | [`base_setup`](odoo/addons/base_setup), [`mail`](odoo/addons/mail), [`web`](odoo/addons/web) |
+| [`phone_validation`](odoo/addons/phone_validation) | 6 | [`base`](odoo/odoo/addons/base), [`mail`](odoo/addons/mail) |
+| [`event_sale`](odoo/addons/event_sale) | 6 | [`event_product`](odoo/addons/event_product), [`sale_management`](odoo/addons/sale_management) |
 
 ## Core Dependency Backbone (Mermaid)
 
@@ -237,34 +237,34 @@ graph LR;
     linkStyle 40,41,42,43,56,57,58 stroke:#9e9e9e,stroke-width:2px;
     linkStyle 45,46,47,48,49,50,51,52,53,54,55 stroke:#c2185b,stroke-width:2px;
 
-    click sale " addons/sale" "Open sale module";
-    click resource " addons/resource" "Open resource module";
-    click sale_stock " addons/sale_stock" "Open sale_stock module";
-    click portal " addons/portal" "Open portal module";
-    click stock " addons/stock" "Open stock module";
-    click base_vat " addons/base_vat" "Open base_vat module";
-    click sale_management " addons/sale_management" "Open sale_management module";
-    click base_setup " addons/base_setup" "Open base_setup module";
-    click event " addons/event" "Open event module";
-    click calendar " addons/calendar" "Open calendar module";
-    click hr " addons/hr" "Open hr module";
-    click website_sale " addons/website_sale" "Open website_sale module";
-    click base_iban " addons/base_iban" "Open base_iban module";
-    click account " addons/account" "Open account module";
-    click web " addons/web" "Open web module";
-    click web_tour " addons/web_tour" "Open web_tour module";
-    click l10n_syscohada " addons/l10n_syscohada" "Open l10n_syscohada module";
-    click point_of_sale " addons/point_of_sale" "Open point_of_sale module";
-    click payment " addons/payment" "Open payment module";
-    click digest " addons/digest" "Open digest module";
-    click mrp " addons/mrp" "Open mrp module";
-    click website " addons/website" "Open website module";
-    click base "  addons/base" "Open base module";
-    click account_edi_ubl_cii " addons/account_edi_ubl_cii" "Open account_edi_ubl_cii module";
-    click mass_mailing " addons/mass_mailing" "Open mass_mailing module";
-    click crm " addons/crm" "Open crm module";
-    click stock_account " addons/stock_account" "Open stock_account module";
-    click mail " addons/mail" "Open mail module";
-    click sms " addons/sms" "Open sms module";
-    click spreadsheet_dashboard " addons/spreadsheet_dashboard" "Open spreadsheet_dashboard module";
+    click sale "odoo/addons/sale" "Open sale module";
+    click resource "odoo/addons/resource" "Open resource module";
+    click sale_stock "odoo/addons/sale_stock" "Open sale_stock module";
+    click portal "odoo/addons/portal" "Open portal module";
+    click stock "odoo/addons/stock" "Open stock module";
+    click base_vat "odoo/addons/base_vat" "Open base_vat module";
+    click sale_management "odoo/addons/sale_management" "Open sale_management module";
+    click base_setup "odoo/addons/base_setup" "Open base_setup module";
+    click event "odoo/addons/event" "Open event module";
+    click calendar "odoo/addons/calendar" "Open calendar module";
+    click hr "odoo/addons/hr" "Open hr module";
+    click website_sale "odoo/addons/website_sale" "Open website_sale module";
+    click base_iban "odoo/addons/base_iban" "Open base_iban module";
+    click account "odoo/addons/account" "Open account module";
+    click web "odoo/addons/web" "Open web module";
+    click web_tour "odoo/addons/web_tour" "Open web_tour module";
+    click l10n_syscohada "odoo/addons/l10n_syscohada" "Open l10n_syscohada module";
+    click point_of_sale "odoo/addons/point_of_sale" "Open point_of_sale module";
+    click payment "odoo/addons/payment" "Open payment module";
+    click digest "odoo/addons/digest" "Open digest module";
+    click mrp "odoo/addons/mrp" "Open mrp module";
+    click website "odoo/addons/website" "Open website module";
+    click base "odoo/odoo/addons/base" "Open base module";
+    click account_edi_ubl_cii "odoo/addons/account_edi_ubl_cii" "Open account_edi_ubl_cii module";
+    click mass_mailing "odoo/addons/mass_mailing" "Open mass_mailing module";
+    click crm "odoo/addons/crm" "Open crm module";
+    click stock_account "odoo/addons/stock_account" "Open stock_account module";
+    click mail "odoo/addons/mail" "Open mail module";
+    click sms "odoo/addons/sms" "Open sms module";
+    click spreadsheet_dashboard "odoo/addons/spreadsheet_dashboard" "Open spreadsheet_dashboard module";
 ```
