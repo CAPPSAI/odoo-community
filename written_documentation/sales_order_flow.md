@@ -103,8 +103,8 @@ This works through **Python's Method Resolution Order (MRO)**, essentially a "Ch
 
 | Method | Defined In | Purpose |
 | :--- | :--- | :--- |
-| `action_confirm()` | [`addons/sale`](odoo/addons/sale) | **Public Entry Point**. Validates state, locks order, sends email. |
-| `_action_confirm()` | [`addons/sale`](odoo/addons/sale) | **The Hook**. Empty in base, but extended by everyone else. |
-| `_action_launch_stock_rule()` | [`addons/sale_stock`](odoo/addons/sale_stock) | Runs procurement rules to create_Delivery Orders. |
-| `_timesheet_service_generation()` | [`addons/sale_project`](odoo/addons/sale_project) | Creates Tasks/Projects for service products. |
+| `action_confirm()` | [`addons/sale`](../addons/sale) | **Public Entry Point**. Validates state, locks order, sends email. |
+| `_action_confirm()` | [`addons/sale`](../addons/sale) | **The Hook**. Empty in base, but extended by everyone else. |
+| `_action_launch_stock_rule()` | [`addons/sale_stock`](../addons/sale_stock) | Runs procurement rules to create_Delivery Orders. |
+| `_timesheet_service_generation()` | [`addons/sale_project`](../addons/sale_project) | Creates Tasks/Projects for service products. |
 
