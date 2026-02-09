@@ -441,7 +441,8 @@ actual arch.
                 combined_arch = view._get_combined_arch()
 
                 # check primary view that extends this current view
-                if view.inherit_id or view.inherit_children_ids:
+                # keep a way to skip this check to avoid marking too many views as failed during an upgrade
+                if not self.env.context.get('_skip_primary_extensions_check') and (view.inherit_id or view.inherit_children_ids):
                     root = view
                     while root.inherit_id and root.mode != 'primary':
                         root = root.inherit_id
@@ -690,8 +691,11 @@ actual arch.
         :return: id of the default view of False if none found
         :rtype: int
         """
-        domain = [('model', '=', model), ('type', '=', view_type), ('mode', '=', 'primary')]
-        return self.search(domain, limit=1).id
+        return self.search(self._get_default_view_domain(model, view_type), limit=1).id
+
+    @api.model
+    def _get_default_view_domain(self, model, view_type):
+        return Domain([('model', '=', model), ('type', '=', view_type), ('mode', '=', 'primary')])
 
     #------------------------------------------------------
     # Inheritance mecanism
@@ -3195,9 +3199,9 @@ class Base(models.AbstractModel):
         :rtype: list
         """
         return [
-            'change_default', 'context', 'currency_field', 'definition_record', 'definition_record_field', 'digits', 'domain', 'aggregator', 'groups',
-            'help', 'model_field', 'name', 'readonly', 'related', 'relation', 'relation_field', 'required', 'searchable', 'selection', 'size',
-            'sortable', 'store', 'string', 'translate', 'trim', 'type', 'groupable', 'falsy_value_label'
+            'change_default', 'context', 'currency_field', 'definition_record', 'definition_record_field', 'digits', 'min_display_digits', 'domain',
+            'aggregator', 'groups', 'help', 'model_field', 'name', 'readonly', 'related', 'relation', 'relation_field', 'required', 'searchable',
+            'selection', 'size', 'sortable', 'store', 'string', 'translate', 'trim', 'type', 'groupable', 'falsy_value_label'
         ]
 
     @api.readonly

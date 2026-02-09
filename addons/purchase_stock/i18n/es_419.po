@@ -3,15 +3,15 @@
 # * purchase_stock
 #
 # "Dylan Kiss (dyki)" <dyki@odoo.com>, 2025.
-# "Fernanda Alvarez (mfar)" <mfar@odoo.com>, 2025.
+# "Fernanda Alvarez (mfar)" <mfar@odoo.com>, 2025, 2026.
 # "Patricia Gutiérrez (pagc)" <pagc@odoo.com>, 2025.
 # Weblate <noreply-mt-weblate@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~18.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-12 18:35+0000\n"
-"PO-Revision-Date: 2025-11-11 17:17+0000\n"
+"POT-Creation-Date: 2026-01-30 18:36+0000\n"
+"PO-Revision-Date: 2026-01-16 20:30+0000\n"
 "Last-Translator: \"Fernanda Alvarez (mfar)\" <mfar@odoo.com>\n"
 "Language-Team: Spanish (Latin America) <https://translate.odoo.com/projects/"
 "odoo-19/purchase_stock/es_419/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12.2\n"
+"X-Generator: Weblate 5.14.3\n"
 
 #. module: purchase_stock
 #: model_terms:ir.ui.view,arch_db:purchase_stock.purchase_order_view_form_inherit
@@ -75,18 +75,30 @@ msgstr "<span class=\"o_stat_value\">%</span>"
 
 #. module: purchase_stock
 #: model_terms:ir.ui.view,arch_db:purchase_stock.product_view_kanban_catalog_purchase_only
+msgid ""
+"<span class=\"text-info fw-bold fs-5 me-1\" groups=\"!uom.group_uom\">Units</"
+"span>"
+msgstr ""
+"<span class=\"text-info fw-bold fs-5 me-1\" groups=\"!"
+"uom.group_uom\">Unidades</span>"
+
+#. module: purchase_stock
+#: model_terms:ir.ui.view,arch_db:purchase_stock.product_view_kanban_catalog_purchase_only
 msgid "<span class=\"text-info fw-bold fs-5 me-1\">Suggest</span>"
 msgstr "<span class=\"text-info fw-bold fs-5 me-1\">Sugerir</span>"
 
 #. module: purchase_stock
 #: model_terms:ir.ui.view,arch_db:purchase_stock.product_view_kanban_catalog_purchase_only
-msgid "<span class=\"text-info fw-bold fs-5 me-1\">units</span>"
-msgstr "<span class=\"text-info fw-bold fs-5 me-1\">unidades</span>"
+msgid "<span class=\"text-muted small me-1\">Monthly Demand:</span>"
+msgstr "<span class=\"text-muted small me-1\">Demanda mensual:</span>"
 
 #. module: purchase_stock
 #: model_terms:ir.ui.view,arch_db:purchase_stock.product_view_kanban_catalog_purchase_only
-msgid "<span class=\"text-muted small me-1\">Monthly Demand:</span>"
-msgstr "<span class=\"text-muted small me-1\">Demanda mensual:</span>"
+msgid ""
+"<span class=\"text-muted small ms-1\" groups=\"!uom.group_uom\">Units</span>"
+msgstr ""
+"<span class=\"text-muted small ms-1\" groups=\"!uom.group_uom\">Unidades</"
+"span>"
 
 #. module: purchase_stock
 #: model_terms:ir.ui.view,arch_db:purchase_stock.product_view_kanban_catalog_purchase_only
@@ -292,7 +304,8 @@ msgstr "Días para la compra"
 #: model:ir.model.fields,help:purchase_stock.field_res_partner__group_rfq
 #: model:ir.model.fields,help:purchase_stock.field_res_users__group_rfq
 msgid ""
-"Define if RFQ should be grouped         together based on expected arrival.\n"
+"Define if RFQ should be grouped         together based on expected arrival, "
+"except for dropship operations.\n"
 "         On Order: Replenishment needs will be grouped together except for "
 "MTO.\n"
 "         Daily: Replenishment needs will be grouped if the expected arrival "
@@ -301,15 +314,6 @@ msgid ""
 "is the same week or week day\n"
 "         Always: Replenishment needs will always be grouped."
 msgstr ""
-"Define si las solicitudes de cotización deben agruparse         según la "
-"llegada esperada.\n"
-"         Al ordenar: Las necesidades de reabastecimiento se agruparán "
-"excepto para MTO.\n"
-"         Diario: Las necesidades de reabastecimiento se agruparán si la "
-"llegada esperada es el mismo día.\n"
-"         Semanal: Las necesidades de reabastecimiento se agruparán si la "
-"llegada esperada es la misma semana o día de la semana.\n"
-"         Siempre: Las necesidades de reabastecimiento siempre se agruparán."
 
 #. module: purchase_stock
 #: model:ir.model.fields,field_description:purchase_stock.field_stock_picking__delay_pass
@@ -432,7 +436,7 @@ msgstr "Reporte de pronóstico"
 #. odoo-javascript
 #: code:addons/purchase_stock/static/src/product_catalog/search/search_panel.js:0
 msgid "Forecasted"
-msgstr ""
+msgstr "Pronosticado"
 
 #. module: purchase_stock
 #: model:ir.model.fields,field_description:purchase_stock.field_purchase_order_line__forecasted_issue
@@ -663,7 +667,7 @@ msgstr "No se encontró ningún proveedor para reabastecer"
 #. module: purchase_stock
 #: model:ir.model.fields.selection,name:purchase_stock.selection__purchase_order__receipt_status__pending
 msgid "Not Received"
-msgstr "No recibido"
+msgstr "Sin recibir"
 
 #. module: purchase_stock
 #. odoo-javascript
@@ -1319,6 +1323,31 @@ msgstr "ordenado en lugar de"
 #: code:addons/purchase_stock/models/stock_rule.py:0
 msgid "this product should be manually replenished."
 msgstr "debe reabastecer este producto de forma manual."
+
+#~ msgid ""
+#~ "Define if RFQ should be grouped         together based on expected "
+#~ "arrival.\n"
+#~ "         On Order: Replenishment needs will be grouped together except "
+#~ "for MTO.\n"
+#~ "         Daily: Replenishment needs will be grouped if the expected "
+#~ "arrival is the same day\n"
+#~ "         Weekly: Replenishment needs will be grouped if the expected "
+#~ "arrival is the same week or week day\n"
+#~ "         Always: Replenishment needs will always be grouped."
+#~ msgstr ""
+#~ "Define si las solicitudes de cotización deben agruparse         según la "
+#~ "llegada esperada.\n"
+#~ "         Al ordenar: Las necesidades de reabastecimiento se agruparán "
+#~ "excepto para MTO.\n"
+#~ "         Diario: Las necesidades de reabastecimiento se agruparán si la "
+#~ "llegada esperada es el mismo día.\n"
+#~ "         Semanal: Las necesidades de reabastecimiento se agruparán si la "
+#~ "llegada esperada es la misma semana o día de la semana.\n"
+#~ "         Siempre: Las necesidades de reabastecimiento siempre se "
+#~ "agruparán."
+
+#~ msgid "<span class=\"text-info fw-bold fs-5 me-1\">units</span>"
+#~ msgstr "<span class=\"text-info fw-bold fs-5 me-1\">unidades</span>"
 
 #~ msgid "<span class=\"text-info fw-bold fs-5\"> Suggest </span>"
 #~ msgstr "<span class=\"text-info fw-bold fs-5\"> Sugerir </span>"

@@ -1,22 +1,14 @@
-import { callbacksForCursorUpdate } from "@html_editor/utils/selection";
 import { Plugin } from "../plugin";
 import { isBlock } from "../utils/blocks";
 import { fillEmpty, splitTextNode } from "../utils/dom";
 import {
     isContentEditable,
     isContentEditableAncestor,
-    isElement,
     isTextNode,
     isVisible,
 } from "../utils/dom_info";
 import { prepareUpdate } from "../utils/dom_state";
-import {
-    childNodes,
-    closestElement,
-    descendants,
-    firstLeaf,
-    lastLeaf,
-} from "../utils/dom_traversal";
+import { childNodes, closestElement, firstLeaf, lastLeaf } from "../utils/dom_traversal";
 import { DIRECTIONS, childNodeIndex, nodeSize } from "../utils/position";
 import { isProtected, isProtecting } from "@html_editor/utils/dom_info";
 
@@ -105,6 +97,8 @@ export class SplitPlugin extends Plugin {
             // @todo @phoenix collapseIfZWS is not tested
             // this.shared.collapseIfZWS();
             this.dependencies.delete.deleteSelection();
+            selection = this.dependencies.selection.getEditableSelection();
+        } else if (!closestElement(selection.anchorNode).isContentEditable) {
             selection = this.dependencies.selection.getEditableSelection();
         }
 
@@ -251,7 +245,7 @@ export class SplitPlugin extends Plugin {
      * @param {HTMLElement} limitAncestor
      * @returns { Node }
      */
-    splitAroundUntil(elements, limitAncestor, cursors = null) {
+    splitAroundUntil(elements, limitAncestor) {
         elements = Array.isArray(elements) ? elements : [elements];
         const firstNode = elements[0];
         const lastNode = elements[elements.length - 1];
@@ -269,21 +263,12 @@ export class SplitPlugin extends Plugin {
         ) {
             return this.splitAroundUntil(
                 [firstNode.parentElement, lastNode.parentElement],
-                limitAncestor,
-                cursors
+                limitAncestor
             );
         } else if (!after && lastNode.parentElement !== limitAncestor) {
-            return this.splitAroundUntil(
-                [firstNode, lastNode.parentElement],
-                limitAncestor,
-                cursors
-            );
+            return this.splitAroundUntil([firstNode, lastNode.parentElement], limitAncestor);
         } else if (!before && firstNode.parentElement !== limitAncestor) {
-            return this.splitAroundUntil(
-                [firstNode.parentElement, lastNode],
-                limitAncestor,
-                cursors
-            );
+            return this.splitAroundUntil([firstNode.parentElement, lastNode], limitAncestor);
         }
         // Split up ancestors up to font
         while (after && after.parentElement !== limitAncestor) {
@@ -301,32 +286,7 @@ export class SplitPlugin extends Plugin {
         if (before) {
             beforeSplit = this.splitElement(limitAncestor, childNodeIndex(before) + 1)[1];
         }
-        const result = beforeSplit || afterSplit || limitAncestor;
-        this.fixSplitAroundUntilEmptyNodes(result.parentElement, cursors);
-        return result;
-    }
-
-    /**
-     * Fix for stable to remove empty nodes created by `splitAroundUntil`
-     * and properly manage the cursor.
-     * @param {Node} node
-     * @param {HTMLElement} limitAncestor
-     * @returns { Node }
-     */
-    fixSplitAroundUntilEmptyNodes(node, cursors) {
-        node &&
-            descendants(node)
-                .filter(
-                    (node) =>
-                        isElement(node) &&
-                        node.childNodes.length &&
-                        [...node.childNodes].every((n) => isTextNode(n)) &&
-                        !node.textContent.replaceAll("\ufeff", "")
-                )
-                .forEach((node) => {
-                    cursors?.update(callbacksForCursorUpdate.remove(node));
-                    node.remove();
-                });
+        return beforeSplit || afterSplit || limitAncestor;
     }
 
     splitSelection() {

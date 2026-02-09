@@ -12,6 +12,7 @@ import { omit } from "@web/core/utils/objects";
 let nextId = -1;
 const mutex = new Mutex();
 const updateRewardsMutex = new Mutex();
+const updateProgramsMutex = new Mutex();
 const pointsForProgramsCountedRules = {};
 const { DateTime } = luxon;
 
@@ -91,11 +92,13 @@ patch(PosStore.prototype, {
                         changed = true;
                     }
                 }
+
+                const rewardLinesChanged = order._updateRewardLines();
+
                 // Rewards may impact the number of points gained
-                if (changed) {
+                if (changed || rewardLinesChanged) {
                     await this.orderUpdateLoyaltyPrograms();
                 }
-                order._updateRewardLines();
             })
         );
     },
@@ -117,6 +120,13 @@ patch(PosStore.prototype, {
      * Update our couponPointChanges, meaning the points/coupons each program give etc.
      */
     async updatePrograms() {
+        return updateProgramsMutex.exec(async () => {
+            await this._updatePrograms();
+        });
+    },
+
+    // This method should never be called directly, use updatePrograms() instead
+    async _updatePrograms() {
         const order = this.getOrder();
         // 'order.delivery_provider_id' check is used for UrbanPiper orders (as loyalty points and rewards are not allowed for UrbanPiper orders)
         if (!order || order.delivery_provider_id) {
@@ -240,15 +250,19 @@ patch(PosStore.prototype, {
             (rule) =>
                 rule.mode === "with_code" && (rule.promo_barcode === code || rule.code === code)
         );
-        const partnerId = await this.data.call("loyalty.card", "get_loyalty_card_partner_by_code", [
-            code,
-        ]);
+        const partnerId = (
+            await this.data.call("loyalty.card", "get_loyalty_card_partner_by_code", [code])
+        )?.[0];
         let claimableRewards = null;
         let coupon = null;
         // If the code belongs to a loyalty card we just set the partner
         if (partnerId) {
+            if (!this.models["res.partner"].get(partnerId)) {
+                await this.data.read("res.partner", [partnerId]);
+            }
             const partner = this.models["res.partner"].get(partnerId);
             order.setPartner(partner);
+            await this.updateRewards();
         } else if (rule) {
             const date_order = DateTime.fromSQL(order.date_order);
             if (
@@ -351,6 +365,10 @@ patch(PosStore.prototype, {
             );
         });
     },
+    async applyDiscount(percent, order = this.getOrder()) {
+        await super.applyDiscount(...arguments);
+        await this.updatePrograms();
+    },
     async addLineToCurrentOrder(vals, opt = {}, configure = true) {
         if (!vals.product_tmpl_id && vals.product_id) {
             vals.product_tmpl_id = vals.product_id.product_tmpl_id;
@@ -414,6 +432,9 @@ patch(PosStore.prototype, {
         }
 
         const result = await super.addLineToCurrentOrder(vals, opt, configure);
+        if (!result) {
+            return;
+        }
 
         const rewardsToApply = [];
         for (const reward of potentialRewards) {
@@ -612,6 +633,7 @@ patch(PosStore.prototype, {
                         'The reward "%s" contain an error in its domain, your domain must be compatible with the PoS client',
                         this.models["loyalty.reward"].getAll()[index].description
                     ),
+                    showReloadButton: true,
                 });
 
                 reward.delete();
@@ -841,13 +863,15 @@ patch(PosStore.prototype, {
                     }
                 }
             }
-            if (payload.coupon_report) {
+            if (payload.coupon_report && Object.keys(payload.coupon_report).length > 0) {
                 for (const [actionId, active_ids] of Object.entries(payload.coupon_report)) {
                     await this.env.services.report.doAction(actionId, active_ids);
                 }
                 order.has_pdf_gift_card = Object.keys(payload.coupon_report).length > 0;
             }
-            order.new_coupon_info = payload.new_coupon_info;
+            if (payload.new_coupon_info?.length) {
+                order.new_coupon_info = payload.new_coupon_info;
+            }
         }
     },
 });

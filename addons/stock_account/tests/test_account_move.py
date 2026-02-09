@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
 from freezegun import freeze_time
 
 from odoo.addons.stock_account.tests.common import TestStockValuationCommon
@@ -13,7 +12,8 @@ from odoo import fields, Command
 class TestAccountMove(TestStockValuationCommon):
     def test_standard_perpetual_01_mc_01(self):
         product = self.product_standard_auto
-        rate = self.other_currency.rate_ids.sorted()[0].rate
+        self._use_multi_currencies([('2017-01-01', 2.0)])
+        rate = self.other_currency.rate_ids.rate
 
         move_form = Form(self.env["account.move"].with_context(default_move_type="out_invoice"))
         move_form.partner_id = self.partner
@@ -37,7 +37,8 @@ class TestAccountMove(TestStockValuationCommon):
 
     def test_fifo_perpetual_01_mc_01(self):
         product = self.product_fifo_auto
-        rate = self.other_currency.rate_ids.sorted()[0].rate
+        self._use_multi_currencies([('2017-01-01', 2.0)])
+        rate = self.other_currency.rate_ids.rate
 
         move_form = Form(self.env["account.move"].with_context(default_move_type="out_invoice"))
         move_form.partner_id = self.partner
@@ -60,7 +61,8 @@ class TestAccountMove(TestStockValuationCommon):
 
     def test_average_perpetual_01_mc_01(self):
         product = self.product_avco_auto
-        rate = self.other_currency.rate_ids.sorted()[0].rate
+        self._use_multi_currencies([('2017-01-01', 2.0)])
+        rate = self.other_currency.rate_ids.rate
 
         move_form = Form(self.env["account.move"].with_context(default_move_type="out_invoice"))
         move_form.partner_id = self.partner
@@ -86,6 +88,8 @@ class TestAccountMove(TestStockValuationCommon):
         """Storno accounting uses negative numbers on debit/credit to cancel other moves.
         This test checks that we do the same for the anglosaxon lines when storno is enabled.
         """
+        self._use_multi_currencies([('2017-01-01', 2.0)])
+
         product = self.product_standard_auto
         self.env.company.account_storno = True
         self.env.company.anglo_saxon_accounting = True
@@ -313,3 +317,24 @@ class TestAccountMove(TestStockValuationCommon):
             receipt.scheduled_date = prior_to_lock_date
         with self.assertRaises(UserError):
             receipt_done.date_done = prior_to_lock_date
+
+    def test_invoice_with_journal_item_without_label(self):
+        """Test posting an invoice whose invoice lines have no label.
+        The 'name' field is optional on account.move.line and should be
+        handled safely when generating accounting entries.
+        """
+        move = self.env['account.move'].create({
+            'move_type': 'out_invoice',
+            'partner_id': self.partner.id,
+            'invoice_line_ids': [
+                Command.create({
+                    'product_id': self.product_standard.id,
+                    'name': False,
+                }),
+            ],
+        })
+        move.action_post()
+        # name should remain falsy on the invoice line
+        self.assertFalse(move.invoice_line_ids.name)
+        # ensure the invoice is posted successfully
+        self.assertEqual(move.state, 'posted')

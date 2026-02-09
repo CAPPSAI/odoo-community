@@ -966,6 +966,34 @@ class TestFields(TransactionCaseWithUserDemo, TransactionExpressionCase):
         self.env.invalidate_all()
         self.assertEqual(record.created_id.value, 3)
 
+    def test_18_flush_precommit(self):
+        """ check that cr.flush() runs precommits as many times as needed. """
+        cr = self.env.cr
+        record = self.env['test_orm.compute.created'].create({'name': 'foo'})
+        # The hook triggers a compute of the value (stored-computed) field
+        # which triggers the hook again, limited to 4 calls.
+        # Choosing a number < 10 (which is the max number of iterations).
+        count = 4
+
+        def hook():
+            nonlocal count
+            if count <= 0:
+                return
+            count -= 1
+            record.name = 'x'
+
+        def compute_value(self):
+            self.value = 10 + count
+            self.env.cr.precommit.add(hook)
+
+        self.patch(self.registry[record._name], '_compute_value', compute_value)
+
+        # run the pre-commit hook
+        hook()
+        cr.flush()
+        self.assertEqual(count, 0, "Precommit not ran enough times")
+        self.assertEqual(record.value, 10, "Flush not triggered correctly")
+
     def test_20_float(self):
         """ test rounding of float fields """
         record = self.env['test_orm.mixed'].create({})
@@ -3201,6 +3229,29 @@ class TestFields(TransactionCaseWithUserDemo, TransactionExpressionCase):
                 self.assertNotIn(old_name, self.env['res.users']._fields)
                 self.assertIn(new_name, self.env['res.partner']._fields)
                 self.assertIn(new_name, self.env['res.users']._fields)
+
+    def test_100_rename_custom_field_inherited(self):
+        manual_origin = self.env["ir.model.fields"].create({
+            "name": "x_manual_hazel",
+            "model_id": self.env["ir.model"]._get("test_orm.related").id,
+            "ttype": "char",
+        })
+        self.assertEqual(manual_origin.state, "manual")
+        manual_inherited = self.env["ir.model.fields"]._get("test_orm.related_inherits", "x_manual_hazel")
+        self.assertTrue(manual_inherited.exists())
+        self.assertEqual(manual_inherited.state, "base")
+
+        with self.assertRaisesRegex(UserError, r'cannot be removed'):
+            manual_inherited.unlink()
+
+        manual_origin.name = 'x_manual_hazel_2'
+        manual_inherited = self.env["ir.model.fields"]._get("test_orm.related_inherits", 'x_manual_hazel')
+        self.assertFalse(manual_inherited)
+        manual_inherited = self.env["ir.model.fields"]._get("test_orm.related_inherits", 'x_manual_hazel_2')
+        self.assertTrue(manual_inherited.exists())
+
+        manual_origin.unlink()
+        self.assertFalse(manual_inherited.exists())
 
     def test_cache_key_invalidation(self):
         company0 = self.env.ref('base.main_company')

@@ -722,3 +722,10 @@ class TestUi(HttpCaseWithWebsiteUser):
         # It should go in edit mode if we are not on the FR page even if FR is
         # available
         self.start_tour('/', 'alt_a_edit', login='admin')
+
+    def test_mega_footer(self):
+        self.start_tour('/', 'mega_footer', login='admin')
+
+    def test_anchor_on_accordion_item(self):
+        self.start_tour("/", "anchor_behaviour_on_accordion_same_tab", login="admin")
+        self.start_tour("/#What-services-does-your-company-offer-%3F", "anchor_behaviour_on_accordion_new_tab", login="admin")

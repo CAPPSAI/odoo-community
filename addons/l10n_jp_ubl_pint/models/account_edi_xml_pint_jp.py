@@ -28,9 +28,9 @@ class AccountEdiXmlPint_Jp(models.AbstractModel):
         if process_type == 'billing':
             return 'urn:peppol:pint:billing-1@jp-1'
 
-    def _ubl_default_tax_subtotal_grouping_key(self, tax_grouping_key, vals):
+    def _ubl_default_tax_subtotal_grouping_key(self, tax_category_grouping_key, vals):
         # EXTENDS account.edi.xml.ubl_bis3
-        tax_subtotal_grouping_key = super()._ubl_default_tax_subtotal_grouping_key(tax_grouping_key, vals)
+        tax_subtotal_grouping_key = super()._ubl_default_tax_subtotal_grouping_key(tax_category_grouping_key, vals)
 
         # If there is a TaxTotal section in company currency,
         # its TaxSubtotals nodes should contain a 'Percent' node.
@@ -40,7 +40,7 @@ class AccountEdiXmlPint_Jp(models.AbstractModel):
             currency != company.currency_id
             and tax_subtotal_grouping_key['currency'] == company.currency_id
         ):
-            tax_subtotal_grouping_key['percent'] = tax_grouping_key['percent']
+            tax_subtotal_grouping_key['percent'] = tax_category_grouping_key['percent']
 
         return tax_subtotal_grouping_key
 
@@ -60,15 +60,9 @@ class AccountEdiXmlPint_Jp(models.AbstractModel):
 
         return tax_subtotal_node
 
-    def _add_invoice_tax_total_nodes(self, document_node, vals):
-        # EXTENDS account.edi.xml.ubl_bis3
-        document_node['cac:TaxTotal'] = [
-            self._ubl_get_tax_total_node(vals, tax_total)
-            for tax_total in vals['_ubl_values']['tax_totals_currency'].values()
-        ] + [
-            self._ubl_get_tax_total_node(vals, tax_total)
-            for tax_total in vals['_ubl_values']['tax_totals'].values()
-        ]
+    def _ubl_tax_totals_node_grouping_key(self, base_line, tax_data, vals, currency):
+        # OVERRIDE
+        return self.env['account.edi.ubl']._ubl_tax_totals_node_grouping_key(base_line, tax_data, vals, currency)
 
     def _add_invoice_header_nodes(self, document_node, vals):
         invoice = vals['invoice']

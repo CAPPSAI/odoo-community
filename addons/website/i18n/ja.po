@@ -10,14 +10,14 @@
 # Noma Yuki, 2023
 # Martin Trigaux, 2023
 # "Dylan Kiss (dyki)" <dyki@odoo.com>, 2025.
-# "Junko Augias (juau)" <juau@odoo.com>, 2025.
+# "Junko Augias (juau)" <juau@odoo.com>, 2025, 2026.
 # Weblate <noreply-mt-weblate@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-12 18:35+0000\n"
-"PO-Revision-Date: 2025-11-17 03:10+0000\n"
+"POT-Creation-Date: 2026-02-06 18:35+0000\n"
+"PO-Revision-Date: 2026-02-02 13:44+0000\n"
 "Last-Translator: \"Junko Augias (juau)\" <juau@odoo.com>\n"
 "Language-Team: Japanese <https://translate.odoo.com/projects/odoo-19/website/"
 "ja/>\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.12.2\n"
+"X-Generator: Weblate 5.14.3\n"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_quotes_carousel_compact
@@ -1232,7 +1232,7 @@ msgid ""
 "                    Example of rule:<br/>"
 msgstr ""
 "<br/><br/>\n"
-"                  規則例:<br/>"
+"                  ルール例:<br/>"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_company_team_detail
@@ -3407,13 +3407,13 @@ msgstr "%sを有効化しています。"
 #: model_terms:ir.ui.view,arch_db:website.bs_debug_view
 #: model_terms:ir.ui.view,arch_db:website.color_combinations_debug_view
 msgid "Active"
-msgstr "アクティブ"
+msgstr "有効"
 
 #. module: website
 #. odoo-javascript
 #: code:addons/website/static/src/builder/plugins/options/navtabs_images_style_option.xml:0
 msgid "Active only"
-msgstr "アクティブのみ"
+msgstr "有効のみ"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_three_columns
@@ -3537,7 +3537,7 @@ msgstr "新規を追加"
 #. odoo-javascript
 #: code:addons/website/static/src/builder/plugins/form/form_option_plugin.js:0
 msgid "Add New Option"
-msgstr ""
+msgstr "新しいオプションを追加"
 
 #. module: website
 #. odoo-javascript
@@ -4166,9 +4166,21 @@ msgstr "適用"
 
 #. module: website
 #. odoo-javascript
+#: code:addons/website/static/src/builder/plugins/options/scroll_button_option.xml:0
+msgid "Apply a background color"
+msgstr "背景色を適用"
+
+#. module: website
+#. odoo-javascript
 #: code:addons/website/static/src/builder/plugins/options/header/header_font_option.xml:0
 msgid "Apply a light contrast on dropdown buttons"
 msgstr "ドロップダウンボタンに薄いコントラストを適用"
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/builder/plugins/options/scroll_button_option.xml:0
+msgid "Apply an icon color"
+msgstr "アイコンの色を適用"
 
 #. module: website
 #. odoo-javascript
@@ -4310,7 +4322,7 @@ msgstr ""
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.theme_view_search
 msgid "Author"
-msgstr "著作者"
+msgstr "作成者"
 
 #. module: website
 #. odoo-javascript
@@ -4731,6 +4743,7 @@ msgstr "角の丸み(小)"
 
 #. module: website
 #. odoo-javascript
+#: code:addons/website/static/src/builder/plugins/options/card_image_option.xml:0
 #: code:addons/website/static/src/builder/plugins/options/chart_option.xml:0
 #: code:addons/website/static/src/builder/plugins/options/popup_option.xml:0
 #: code:addons/website/static/src/builder/plugins/theme/theme_headings_option.xml:0
@@ -5275,7 +5288,7 @@ msgstr ""
 #: code:addons/website/static/src/builder/plugins/snippets_powerbox_plugin.js:0
 #: model_terms:ir.ui.view,arch_db:website.snippets
 msgid "Chart"
-msgstr "チャート"
+msgstr "グラフ"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_form_aside
@@ -5331,7 +5344,7 @@ msgstr "チェックボックス"
 #. odoo-javascript
 #: code:addons/website/static/src/builder/plugins/form/form_option_plugin.js:0
 msgid "Checkbox List"
-msgstr ""
+msgstr "チェックボックスリスト"
 
 #. module: website
 #. odoo-javascript
@@ -5458,7 +5471,7 @@ msgstr "シナモンロール"
 #: code:addons/website/static/src/builder/plugins/options/countdown_option.xml:0
 #: code:addons/website/static/src/builder/plugins/options/social_media_option.xml:0
 msgid "Circle"
-msgstr "サークル"
+msgstr "円形"
 
 #. module: website
 #. odoo-javascript
@@ -6100,6 +6113,12 @@ msgstr "著作権"
 #: model_terms:ir.ui.view,arch_db:website.s_features_grid
 msgid "Core Features"
 msgstr "コア機能"
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/builder/website_builder.js:0
+msgid "Corrupted content"
+msgstr ""
 
 #. module: website
 #. odoo-javascript
@@ -7803,7 +7822,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/website/static/src/xml/html_editor.xml:0
 msgid "Enter URL, /page, or #anchor"
-msgstr ""
+msgstr "URL、/page、または#アンカーを入力してください"
 
 #. module: website
 #. odoo-javascript
@@ -8374,7 +8393,7 @@ msgstr "フェッチされた要素"
 #. odoo-javascript
 #: code:addons/website/static/src/builder/plugins/form/utils.js:0
 msgid "Field"
-msgstr ""
+msgstr "フィールド"
 
 #. module: website
 #: model:ir.model.fields,field_description:website.field_website_snippet_filter__field_names
@@ -10192,7 +10211,7 @@ msgstr "このセクションでは、よくある質問について効率よく
 #. odoo-javascript
 #: code:addons/website/static/src/builder/plugins/options/accordion_option.xml:0
 msgid "Inactive"
-msgstr "非アクティブ"
+msgstr "無効"
 
 #. module: website
 #: model:ir.model.fields.selection,name:website.selection__theme_ir_asset__directive__include
@@ -10864,7 +10883,7 @@ msgstr "項目"
 #: code:addons/website/static/src/builder/plugins/options/accordion_option.xml:0
 #: model_terms:ir.ui.view,arch_db:website.snippets
 msgid "Items"
-msgstr "件"
+msgstr "項目"
 
 #. module: website
 #. odoo-javascript
@@ -11108,7 +11127,7 @@ msgstr "ラザニア・アル・フォルノ"
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.website_visitor_view_search
 msgid "Last 7 Days"
-msgstr "過去7日"
+msgstr "直近７日"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.website_visitor_view_kanban
@@ -13096,7 +13115,7 @@ msgstr "オプション 3"
 #. odoo-javascript
 #: code:addons/website/static/src/builder/plugins/form/form_option_plugin.js:0
 msgid "Option List"
-msgstr ""
+msgstr "オプションリスト"
 
 #. module: website
 #. odoo-javascript
@@ -14410,7 +14429,7 @@ msgstr "ラジオボタン"
 #. odoo-javascript
 #: code:addons/website/static/src/builder/plugins/form/form_option_plugin.js:0
 msgid "Radio Button List"
-msgstr ""
+msgstr "ラジオボタンリスト"
 
 #. module: website
 #. odoo-javascript
@@ -14518,7 +14537,7 @@ msgstr "レコード"
 #. module: website
 #: model:ir.model,name:website.model_ir_rule
 msgid "Record Rule"
-msgstr "レコード規則"
+msgstr "レコードルール"
 
 #. module: website
 #: model:ir.model.fields,field_description:website.field_website_controller_page__record_view_id
@@ -14703,7 +14722,7 @@ msgstr "テーマを削除"
 #. odoo-javascript
 #: code:addons/website/static/src/builder/plugins/options/background_video_option.xml:0
 msgid "Remove video"
-msgstr ""
+msgstr "動画を削除"
 
 #. module: website
 #. odoo-python
@@ -15073,6 +15092,12 @@ msgstr "保存してリダイレクト"
 #: code:addons/website/static/src/builder/plugins/font/add_font_dialog.xml:0
 msgid "Save and Reload"
 msgstr "保存して再読込"
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/builder/website_builder.js:0
+msgid "Save anyway"
+msgstr ""
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.bs_debug_view
@@ -15700,7 +15725,7 @@ msgstr "メッセージを表示し、カウントダウンを保留"
 #. odoo-javascript
 #: code:addons/website/static/src/js/backend/view_hierarchy/hierarchy_navbar.xml:0
 msgid "Show inactive views"
-msgstr "非アクティブビューを表示"
+msgstr "無効ビューを表示"
 
 #. module: website
 #. odoo-javascript
@@ -15730,6 +15755,12 @@ msgstr "クッキーバーを表示"
 #: code:addons/website/static/src/builder/plugins/options/header/header_elements_option.xml:0
 msgid "Show/Hide Elements"
 msgstr "要素の表示/非表示"
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/builder/plugins/theme/theme_advanced_option.xml:0
+msgid "Show/Hide the header on all pages"
+msgstr "すべてのページでヘッダーを表示/非表示"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.snippets
@@ -17249,6 +17280,14 @@ msgstr "ページは"
 #: code:addons/website/static/src/client_actions/website_preview/create_page_message.xml:0
 msgid "This page does not exist yet. Would you like to create it?"
 msgstr "このページはまだ存在しません。作成しますか?"
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/builder/website_builder.js:0
+msgid ""
+"This page may be corrupted if you save these changes. Are you sure you want "
+"to continue?"
+msgstr ""
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_numbers_boxed
@@ -19092,7 +19131,7 @@ msgstr "サイト訪問者 #%s"
 #. module: website
 #: model:ir.actions.server,name:website.website_visitor_cron_ir_actions_server
 msgid "Website Visitor : clean inactive visitors"
-msgstr "サイト訪問者: 非アクティブ訪問者をクリア"
+msgstr "サイト訪問者: 無効訪問者をクリア"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.menu_tree
@@ -19543,6 +19582,12 @@ msgstr "公開・非公開する権限がありません"
 #: code:addons/website/static/src/components/dialog/seo.xml:0
 msgid "You don't have permissions to edit this record."
 msgstr "このレコードの編集権がありません。"
+
+#. module: website
+#. odoo-python
+#: code:addons/website/models/website.py:0
+msgid "You don't have the necessary access rights to access this dashboard."
+msgstr ""
 
 #. module: website
 #. odoo-javascript
